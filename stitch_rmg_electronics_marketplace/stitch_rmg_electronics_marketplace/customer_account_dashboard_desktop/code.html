@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TECHFLOW | Account Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-bright": "#38393a", "on-surface-variant": "#cfc4c5", "outline-variant": "#4c4546", "surface-dim": "#121414", "surface-tint": "#c6c6c6", "on-secondary": "#303030", "secondary-container": "#474746", "on-secondary-container": "#b7b5b4", "on-primary": "#303030", "surface-container-highest": "#333535", "on-primary-fixed-variant": "#474747", surface: "#121414", "error-container": "#93000a", "inverse-on-surface": "#2f3131", "primary-container": "#000000", "secondary-fixed-dim": "#c8c6c5", "on-secondary-fixed-variant": "#474746", "on-error-container": "#ffdad6", "surface-container-low": "#1a1c1c", "on-error": "#690005", "tertiary-fixed-dim": "#00decb", secondary: "#c8c6c5", "secondary-fixed": "#e5e2e1", primary: "#c6c6c6", "surface-variant": "#333535", "tertiary-container": "#000000", "on-surface": "#e2e2e2", "inverse-surface": "#e2e2e2", "surface-container-high": "#282a2b", "surface-container": "#1e2020", "on-background": "#e2e2e2", "on-secondary-fixed": "#1b1b1b", "primary-fixed": "#e2e2e2", outline: "#988e90", "on-tertiary-container": "#008478", "on-tertiary": "#003732", tertiary: "#00decb", "on-primary-container": "#757575", "inverse-primary": "#5e5e5e", "surface-container-lowest": "#0c0f0f", "on-primary-fixed": "#1b1b1b", "tertiary-fixed": "#41fce7", error: "#ffb4ab", background: "#121414", "on-tertiary-fixed-variant": "#005048", "on-tertiary-fixed": "#00201c", "primary-fixed-dim": "#c6c6c6"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {sm: "0.5rem", gutter: "1rem", base: "4px", xs: "0.25rem", xl: "2rem", md: "1rem", "margin-mobile": "1rem", lg: "1.5rem", "margin-desktop": "2.5rem"}, fontFamily: {"body-sm": ["Inter"], "price-display": ["Inter"], "headline-xl": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-md": ["Inter"], "label-bold": ["Inter"], "headline-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"body-sm": ["12px", {lineHeight: "16px", fontWeight: "400"}], "price-display": ["20px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "700"}], "headline-xl": ["32px", {lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "headline-lg-mobile": ["20px", {lineHeight: "28px", fontWeight: "700"}], "headline-md": ["18px", {lineHeight: "24px", fontWeight: "600"}], "label-bold": ["12px", {lineHeight: "12px", fontWeight: "700"}], "headline-lg": ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700"}]}}}};</script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar Shell -->
+<nav class="bg-surface dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline flex items-center justify-between px-gutter py-sm w-full max-w-full sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-black tracking-tighter text-primary dark:text-on-primary-fixed">TECHFLOW</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors font-body-md text-body-md" href="#">Deals</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors font-body-md text-body-md" href="#">Laptops</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors font-body-md text-body-md" href="#">Components</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors font-body-md text-body-md" href="#">Mobile</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-on-primary-fixed transition-colors font-body-md text-body-md" href="#">Enterprise</a>
+</div>
+</div>
+<div class="flex-1 max-w-xl px-xl hidden lg:block">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md font-body-md" placeholder="Search enterprise hardware..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container dark:hover:bg-surface-variant rounded transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 hover:bg-surface-container dark:hover:bg-surface-variant rounded transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container dark:hover:bg-surface-variant rounded transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar Shell (Fixed) -->
+<aside class="bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline h-screen w-64 fixed left-0 top-0 pt-20 flex flex-col p-4 z-40">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3 mb-4">
+<img alt="User Profile Avatar" class="w-12 h-12 rounded-full border-2 border-primary-fixed" data-alt="A professional headshot of a person with a clean-cut appearance, set against a blurred modern office background. The lighting is bright and even, reflecting a corporate professional environment. The image is circular-cropped and features high resolution and clarity, aligning with a premium dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgulePZZzLkTF0NmXZ9QgzCr5XmzaNmcZSXsqth7PQDuq16izbXzYvq6c4x8MhdN0Yjh8e7eek6fPUdYu9qigIHHHotCgMS8_So8I5BoT2O6Ol0jENqPzyuDMK9EaoaSGH-BRaj63em4cadwowGP36xybXFBXpef054oCjADNlX8qEM0CkK9DnnxpIN-RJFJ5Kr-BESe4oNmxjJOZDs93i1UvKigS2Y-0p6M0YKA2jMz3_0FraOch-Vl6kGH1C5cYzJ3EG5_vnpT8"/>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface">Alex Carter</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+</div>
+<nav class="space-y-1">
+<!-- Determining Active: Using "Profile" as closest for Account Dashboard context -->
+<a class="flex items-center gap-3 bg-primary-container dark:bg-tertiary-container text-on-primary-container dark:text-on-tertiary-container rounded-lg px-4 py-2 my-1 font-label-bold text-label-bold transition-transform active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container px-4 py-2 my-1 rounded-lg font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container px-4 py-2 my-1 rounded-lg font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container px-4 py-2 my-1 rounded-lg font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span>Wishlist</span>
+</a>
+<div class="pt-4 border-t border-outline-variant mt-4">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container px-4 py-2 my-1 rounded-lg font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span>Service Requests</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 p-8">
+<header class="mb-8">
+<h1 class="font-headline-xl text-headline-xl mb-1">Account Dashboard</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Manage your hardware, track orders, and view reward balances.</p>
+</header>
+<!-- Overview Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Wallet & Rewards Card -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-primary-container text-on-primary-container p-6 rounded-xl relative overflow-hidden h-full flex flex-col justify-between">
+<div class="z-10">
+<span class="font-label-bold text-label-bold opacity-80 uppercase tracking-widest">Available Balance</span>
+<div class="flex items-end gap-2 mt-2">
+<span class="text-4xl font-black">₹42,850</span>
+<span class="font-label-bold text-label-bold mb-1 opacity-70">INR</span>
+</div>
+</div>
+<div class="mt-8 z-10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-sm text-body-sm">RMG Reward Points</span>
+<span class="font-label-bold text-label-bold text-tertiary-fixed">1,240 pts</span>
+</div>
+<div class="h-1.5 w-full bg-on-primary-container/20 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed w-3/4"></div>
+</div>
+</div>
+<!-- Background decoration -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-tertiary-container rounded-full opacity-20 blur-3xl"></div>
+</div>
+</div>
+<!-- Tracking Quick Links -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 h-full">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                            Track Your Shipment
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-bold text-label-bold text-on-tertiary-container bg-tertiary-fixed/20 px-2 py-0.5 rounded">IN TRANSIT</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">#TF-99281-X</span>
+</div>
+<p class="font-body-md text-body-md font-bold mb-1">Razer Blade 16 Laptop</p>
+<p class="text-xs text-on-surface-variant">Expected Delivery: Oct 24, 2024</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-bold text-label-bold text-on-primary-fixed bg-surface-container-highest px-2 py-0.5 rounded">ORDERED</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">#TF-99295-Y</span>
+</div>
+<p class="font-body-md text-body-md font-bold mb-1">NVIDIA RTX 4090 GPU</p>
+<p class="text-xs text-on-surface-variant">Awaiting Shipment</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table -->
+<div class="col-span-12">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Recent Orders</h3>
+<button class="text-primary font-label-bold text-label-bold hover:underline">View All Orders</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Order ID</th>
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Items</th>
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Total</th>
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md font-bold">#TF-99281-X</td>
+<td class="px-6 py-4 font-body-md text-body-md">Oct 20, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">1x Razer Blade 16, 2x Thermal Paste</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">₹2,84,999</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">
+                                                In Transit
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:bg-surface-container-high p-2 rounded-full transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-6 py-4 font-body-md text-body-md font-bold">#TF-99150-A</td>
+<td class="px-6 py-4 font-body-md text-body-md">Oct 12, 2024</td>
+<td class="px-6 py-4 font-body-md text-body-md">3x Samsung 990 Pro 2TB</td>
+<td class="px-6 py-4 font-body-md text-body-md font-bold">₹54,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-on-secondary-container/10 text-on-secondary-container">
+                                                Delivered
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:bg-surface-container-high p-2 rounded-full transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Recently Viewed Carousel Section -->
+<div class="col-span-12 mt-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md">Recently Viewed</h3>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-high transition-all" id="prevBtn">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-high transition-all" id="nextBtn">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-4" id="carousel">
+<!-- Product Card 1 -->
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg p-4 group hover:shadow-md transition-all">
+<div class="relative mb-3 bg-surface-container-low rounded-md overflow-hidden aspect-square flex items-center justify-center">
+<img alt="High Performance Laptop" class="object-contain w-3/4 h-3/4 group-hover:scale-110 transition-transform duration-500" data-alt="A sleek, professional workstation laptop presented on a clean, light-colored surface. The keyboard is backlit with a soft white glow, and the screen shows a complex engineering schematic. The lighting is bright and industrial, emphasizing the sharp edges and premium finish of the hardware. The background is a minimalist tech studio with cool grey tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeTrqkC2Q-96KImvFynqYie97UMSHAPRDfCazzf0zdxdNTpNvn7wFzB7CFcfIilqwubKFnymhFCm3ROSDXUVu5AVSPARKwvf-KKvKlRu88KIrXrs7_-t0Yw_HX48ivMoWdw4iyM_MElu5BJWpS9TqvHxWV2kfeiRSF_bwvCyk_iOxmo2ZPKhKXT2ndrj2GYRgQBNdEIss-1j8vh9c9ui7WHNd1TE8W8qsn1JVV2_mLlqKsqzi2hcfd8hEliFaH_CqJFd8ltFApnLs"/>
+<span class="absolute top-2 left-2 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-0.5 rounded">NEW</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold line-clamp-2 mb-1">ASUS ROG Zephyrus G14 (2024)</h4>
+<p class="text-xs text-on-surface-variant mb-2">AMD Ryzen 9 | RTX 4070 | 32GB</p>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-primary">₹1,64,990</span>
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/80 transition-all">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg p-4 group hover:shadow-md transition-all">
+<div class="relative mb-3 bg-surface-container-low rounded-md overflow-hidden aspect-square flex items-center justify-center">
+<img alt="Premium Curved Monitor" class="object-contain w-3/4 h-3/4 group-hover:scale-110 transition-transform duration-500" data-alt="A high-end 49-inch ultrawide curved monitor standing on a sophisticated aluminum stand. The screen displays a vibrant, high-contrast digital landscape. The workspace is dimly lit but punctuated by professional desktop lighting, creating a high-tech, focus-driven atmosphere. The aesthetic is clean, modern, and unmistakably premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7hlpscEpSCQzUEIrALkfjZWLdUsusMDILdfjgvDFFVK7TTx-xvIQXLcZbLUkNoA4l9-A455ixceLnlZ48-Eg1_YOPkBPW-gIg016NzA62QxGGfTsvThtYWfuERcKrwSQTj5Lw8yghoePwu0tNbHuwJKEwZH2XCEzjbrOk0hUM7UZllZsbQEAvxQYicd3ppKyTlJnABJeAr_vZwJgcQx_ONlcEpEgLqeeOi-n-9G5IBdUhw7HmakVFLYVFJ7NBZtNKu08znAr8G-0"/>
+</div>
+<h4 class="font-body-md text-body-md font-bold line-clamp-2 mb-1">Samsung Odyssey Neo G9 Monitor</h4>
+<p class="text-xs text-on-surface-variant mb-2">49" Curved | DQHD | 240Hz</p>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-primary">₹1,12,500</span>
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/80 transition-all">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg p-4 group hover:shadow-md transition-all">
+<div class="relative mb-3 bg-surface-container-low rounded-md overflow-hidden aspect-square flex items-center justify-center">
+<img alt="Gaming PC Component" class="object-contain w-3/4 h-3/4 group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a high-end graphics card with metallic accents and visible cooling fans. The lighting highlights the intricate textures of the hardware. The color palette is dominated by dark metallic greys and blacks, with a subtle blue neon accent reflecting off the surface. The mood is powerful and technically precise, emphasizing performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFp0zmn34nUfluNwlEuFlbeisMLIbs-UmAqkMHiA9Zrbi_UXE52aCLjk1P4Ftp22FB8uqOF0DGlQpgyzFKnxjUxr8IS3bW5Z0XFHrd-U3KRyNIh38GQsBYAEO0fAw1CUGH-IoWQimo32VjLuS2RsBVXE591PvTmNusficpwhLmeNZ4xNYAvYbiXvlNtvCN3ZKt5LSjF53XNUXSmmhMt2jBwtc7j_LDqYm6VCEvUkaFwSH9PXtASWP2SpvZsy7jXzt3KvHDd_jRD58"/>
+</div>
+<h4 class="font-body-md text-body-md font-bold line-clamp-2 mb-1">NVIDIA GeForce RTX 4080 Super</h4>
+<p class="text-xs text-on-surface-variant mb-2">16GB GDDR6X | Founders Edition</p>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-primary">₹98,900</span>
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/80 transition-all">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-lg p-4 group hover:shadow-md transition-all">
+<div class="relative mb-3 bg-surface-container-low rounded-md overflow-hidden aspect-square flex items-center justify-center">
+<img alt="Mechanical Keyboard" class="object-contain w-3/4 h-3/4 group-hover:scale-110 transition-transform duration-500" data-alt="A minimalist mechanical keyboard with custom grey and black keycaps, sitting on a high-quality leather desk mat. The lighting is warm and directional, casting soft shadows that emphasize the tactile quality of the hardware. The setting is a clean, organized professional desk in a modern studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWNLhsls3d2Ra7Sr9FgcZM43ejg9dEwYE0Vyk9Abq0-sKCImSERhmaax6PrgSzZy_puJ-uOB_3lYky0b8YVgdcQXRoeverS6dQG6p1978dNqd9UiwG9Rtk4DobsP7eJM4IIxrD8m2Vz4lC9yQE4IO6XjRgusSrz_StdTNlhbcRBOoKuERpVdxXWq8CwcyiA8HRae_jwenAjYO0QXd_TjFsz96k3Or2xNImV39ODEpxR_g5uQuR9gdqt1mX_QHaUayts2GdxLBoF6Q"/>
+<span class="absolute top-2 left-2 bg-error text-white text-[10px] font-bold px-2 py-0.5 rounded">15% OFF</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold line-clamp-2 mb-1">Keychron Q1 Pro Wireless</h4>
+<p class="text-xs text-on-surface-variant mb-2">Mechanical | RGB | Aluminum Case</p>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-primary">₹14,500</span>
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary/80 transition-all">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-gutter items-center bg-surface-container-highest dark:bg-surface-dim border-t border-outline-variant dark:border-outline">
+<div>
+<span class="font-headline-md text-headline-md font-black text-primary dark:text-on-primary-fixed block mb-2">TECHFLOW</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">© 2024 TECHFLOW Marketplace. Enterprise Hardware Solutions.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-2 md:justify-end">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Support</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Shipping Info</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Partner Portal</a>
+</div>
+</footer>
+<script>
+        // Horizontal Carousel Interaction
+        const carousel = document.getElementById('carousel');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+        // Simple interaction for nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Not preventing default to allow link behavior, 
+                // but adding a subtle feedback
+                link.style.opacity = '0.8';
+                setTimeout(() => link.style.opacity = '1', 100);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMG Electronics - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar suppression for chips */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"tertiary-fixed": "#41fce7", primary: "#c6c6c6", "inverse-primary": "#5e5e5e", "primary-container": "#000000", outline: "#988e90", "on-primary-fixed": "#1b1b1b", "surface-container-low": "#1a1c1c", "surface-bright": "#38393a", "outline-variant": "#4c4546", "on-background": "#e2e2e2", "surface-tint": "#c6c6c6", secondary: "#c8c6c5", "on-surface-variant": "#cfc4c5", "secondary-fixed-dim": "#c8c6c5", "surface-container-highest": "#333535", "on-error-container": "#ffdad6", "on-secondary-fixed": "#1b1b1b", "surface-variant": "#333535", "surface-container-high": "#282a2b", "secondary-container": "#474746", "on-tertiary": "#003732", "tertiary-container": "#000000", "on-primary-fixed-variant": "#474747", tertiary: "#00decb", "on-surface": "#e2e2e2", "on-secondary": "#303030", surface: "#121414", "primary-fixed": "#e2e2e2", "on-error": "#690005", "inverse-surface": "#e2e2e2", "on-tertiary-fixed-variant": "#005048", "surface-container-lowest": "#0c0f0f", "error-container": "#93000a", "primary-fixed-dim": "#c6c6c6", "on-tertiary-container": "#008478", "on-primary-container": "#757575", "surface-container": "#1e2020", "on-tertiary-fixed": "#00201c", "tertiary-fixed-dim": "#00decb", "on-secondary-container": "#b7b5b4", background: "#121414", "inverse-on-surface": "#2f3131", "secondary-fixed": "#e5e2e1", "on-primary": "#303030", "surface-dim": "#121414", error: "#ffb4ab", "on-secondary-fixed-variant": "#474746"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {md: "1rem", sm: "0.5rem", "margin-desktop": "2.5rem", lg: "1.5rem", base: "4px", "margin-mobile": "1rem", xl: "2rem", gutter: "1rem", xs: "0.25rem"}, fontSize: {"headline-xl": ["32px", {lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700"}], "body-sm": ["12px", {lineHeight: "16px", fontWeight: "400"}], "headline-lg": ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "price-display": ["20px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "700"}], "label-bold": ["12px", {lineHeight: "12px", fontWeight: "700"}], "body-lg": ["16px", {lineHeight: "24px", fontWeight: "400"}], "headline-md": ["18px", {lineHeight: "24px", fontWeight: "600"}], "headline-lg-mobile": ["20px", {lineHeight: "28px", fontWeight: "700"}]}, fontFamily: {headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}}}};</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Anchor (Search State) -->
+<header class="sticky top-0 z-50 bg-primary px-margin-mobile py-md flex items-center gap-sm shadow-sm">
+<button aria-label="Go back" class="text-on-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 flex items-center bg-surface-container-lowest rounded-lg px-md py-sm border border-outline-variant focus-within:ring-2 focus-within:ring-tertiary-fixed transition-all">
+<input autofocus="" class="bg-transparent border-none focus:ring-0 w-full text-body-md text-on-surface" id="search-input" placeholder="Search premium electronics..." type="text"/>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<button class="hover:text-on-tertiary-container"><span class="material-symbols-outlined" data-icon="mic">mic</span></button>
+<button class="hover:text-on-tertiary-container"><span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span></button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col gap-xl py-lg overflow-y-auto">
+<!-- Trending Now Chip List -->
+<section class="flex flex-col gap-md">
+<div class="px-margin-mobile flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md">Trending Now</h2>
+</div>
+<div class="flex overflow-x-auto gap-sm px-margin-mobile no-scrollbar">
+<button class="whitespace-nowrap px-md py-sm bg-surface-container-high rounded-full font-label-bold text-label-bold hover:bg-tertiary-container/10 border border-outline-variant">iPhone 15 Pro</button>
+<button class="whitespace-nowrap px-md py-sm bg-surface-container-high rounded-full font-label-bold text-label-bold hover:bg-tertiary-container/10 border border-outline-variant">OLED Gaming Monitors</button>
+<button class="whitespace-nowrap px-md py-sm bg-surface-container-high rounded-full font-label-bold text-label-bold hover:bg-tertiary-container/10 border border-outline-variant">Sony XM5</button>
+<button class="whitespace-nowrap px-md py-sm bg-surface-container-high rounded-full font-label-bold text-label-bold hover:bg-tertiary-container/10 border border-outline-variant">Mechanical Keyboards</button>
+<button class="whitespace-nowrap px-md py-sm bg-surface-container-high rounded-full font-label-bold text-label-bold hover:bg-tertiary-container/10 border border-outline-variant">Dyson V15</button>
+</div>
+</section>
+<!-- Visual Categories Grid -->
+<section class="flex flex-col gap-md px-margin-mobile">
+<h2 class="font-headline-md text-headline-md">Shop by Category</h2>
+<div class="grid grid-cols-4 gap-gutter">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">smartphone</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Mobiles</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">laptop_mac</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Laptops</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">tv</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">TVs</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">headphones</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Audio</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">kitchen</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Appliances</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">watch</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Wearables</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">videogame_asset</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">Gaming</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-tertiary-container hover:bg-tertiary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">more_horiz</span>
+</div>
+<span class="font-label-bold text-label-bold text-center">All</span>
+</div>
+</div>
+</section>
+<!-- Recent Searches List -->
+<section class="flex flex-col gap-md px-margin-mobile">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md">Recent Searches</h2>
+<button class="text-on-tertiary-container font-label-bold text-label-bold hover:underline">Clear all</button>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center justify-between py-md border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-body-md">Noise cancelling earbuds</span>
+</div>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="flex items-center justify-between py-md border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-body-md">4K LED Smart TV 55 inch</span>
+</div>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="flex items-center justify-between py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-body-md">Gaming laptops under $1200</span>
+</div>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">close</span></button>
+</div>
+</div>
+</section>
+<!-- Dynamic Overlay for Auto-Suggest (Initially Hidden) -->
+<div class="hidden absolute top-0 left-0 w-full h-full bg-background z-40 p-0 flex flex-col" id="auto-suggest-overlay">
+<!-- Header Spacer for Sticky Search Bar -->
+<div class="h-16 mb-md"></div>
+<div class="flex flex-col px-margin-mobile">
+<div class="flex items-center gap-md py-md border-b border-outline-variant group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container">search</span>
+<span class="flex-1 font-body-md text-body-md"><span class="font-bold">iph</span>one 15 pro max</span>
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 18px;">north_west</span>
+</div>
+<div class="flex items-center gap-md py-md border-b border-outline-variant group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container">search</span>
+<span class="flex-1 font-body-md text-body-md"><span class="font-bold">iph</span>one cases</span>
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 18px;">north_west</span>
+</div>
+<div class="flex items-center gap-md py-md border-b border-outline-variant group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-tertiary-container">search</span>
+<span class="flex-1 font-body-md text-body-md"><span class="font-bold">iph</span>one chargers</span>
+<span class="material-symbols-outlined text-outline-variant" style="font-size: 18px;">north_west</span>
+</div>
+<!-- Instant Product Results within Suggest -->
+<div class="mt-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-md">Quick Suggestions</h3>
+<div class="flex flex-col gap-md">
+<div class="flex gap-md bg-surface-container rounded-lg p-sm border border-outline-variant">
+<img alt="iPhone 15 Pro" class="w-16 h-16 object-cover rounded-md" data-alt="Close up studio shot of a sleek titanium-colored high-end smartphone showcasing three precision camera lenses. The lighting is dramatic, high-contrast, highlighting the metallic texture and technical craftsmanship of the device. The background is a clean, minimalist charcoal gray with subtle gradients. The overall aesthetic is ultra-modern and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRXg-GVVQeW6VgZvyMC4ZZlPb_I9XI4lnEq2oa2p9OTYZlJcVssxug3Gb7U_L-4Ri8YXge9CoNgYrzewmP7F2V3t7FfordM5wCHc2Zp24NP_ond1z7lCfz3FcXs76DbuJpGAArpIbRPSSYy8PGxUe27rKDhDS3a4s3jbzpmb3zVpcWNu7kig0iHUCf8iSjArdAB0ORv2XC_TYFk5b3RCZEQ74CCC99jniBqagBvi1tbNdySRDvm_sGJN--cZPHhQcDvClEYvt13dY"/>
+<div class="flex flex-col justify-center">
+<p class="font-label-bold text-label-bold">iPhone 15 Pro - Titanium</p>
+<p class="text-tertiary-container font-price-display text-price-display">$999.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Fixed for Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface-container border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container bg-tertiary-container/10 rounded-full px-3 py-1 scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-bold text-label-bold">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="sell">sell</span>
+<span class="font-label-bold text-label-bold">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-bold text-label-bold">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<div class="relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-2 bg-on-tertiary-container text-white text-[8px] px-1 rounded-full">3</span>
+</div>
+<span class="font-label-bold text-label-bold">Cart</span>
+</a>
+</nav>
+<script>
+        const searchInput = document.getElementById('search-input');
+        const suggestOverlay = document.getElementById('auto-suggest-overlay');
+
+        searchInput.addEventListener('input', (e) => {
+            if (e.target.value.length > 0) {
+                suggestOverlay.classList.remove('hidden');
+            } else {
+                suggestOverlay.classList.add('hidden');
+            }
+        });
+
+        // Simple animation for chip interactions
+        const chips = document.querySelectorAll('button.whitespace-nowrap');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.classList.add('scale-95');
+                setTimeout(() => chip.classList.remove('scale-95'), 100);
+            });
+        });
+    </script>
+</body></html>

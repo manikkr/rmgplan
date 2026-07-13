@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Analytics Hub | RMG Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c141e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #323a45;
+            border-radius: 3px;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+        }
+        .data-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#004e5f",
+                      "on-tertiary": "#003642",
+                      "on-surface": "#dbe3f2",
+                      "surface-container": "#161B22",
+                      "primary-container": "#08fdea",
+                      "surface-bright": "#323a45",
+                      "surface-dim": "#0c141e",
+                      "inverse-primary": "#006a62",
+                      "surface-variant": "#2d3541",
+                      "surface-container-low": "#141c27",
+                      "data-viz-1": "#14FFEC",
+                      "error-container": "#93000a",
+                      "status-error": "#EF4444",
+                      "background": "#0c141e",
+                      "surface-container-lowest": "#070f19",
+                      "secondary-fixed": "#dfe2eb",
+                      "on-error": "#690005",
+                      "outline": "#839491",
+                      "on-primary-fixed": "#00201d",
+                      "on-surface-variant": "#b9cac6",
+                      "primary-fixed": "#08fdea",
+                      "secondary": "#c3c6cf",
+                      "status-success": "#23C55E",
+                      "secondary-container": "#454950",
+                      "on-primary": "#003732",
+                      "error": "#ffb4ab",
+                      "data-viz-3": "#FF0080",
+                      "surface-container-highest": "#2d3541",
+                      "inverse-on-surface": "#29313c",
+                      "outline-variant": "#3a4a47",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-container": "#b3ebff",
+                      "tertiary": "#ffffff",
+                      "primary-fixed-dim": "#00decd",
+                      "status-warning": "#F59E0B",
+                      "surface-tint": "#00decd",
+                      "on-primary-container": "#007168",
+                      "data-viz-2": "#7928CA",
+                      "on-secondary-fixed-variant": "#43474e",
+                      "surface": "#0c141e",
+                      "on-tertiary-fixed": "#001f27",
+                      "secondary-fixed-dim": "#c3c6cf",
+                      "on-background": "#dbe3f2",
+                      "on-tertiary-container": "#006e85",
+                      "on-primary-fixed-variant": "#005049",
+                      "inverse-surface": "#dbe3f2",
+                      "on-secondary": "#2d3137",
+                      "on-secondary-container": "#b5b8c1",
+                      "primary": "#ffffff",
+                      "surface-container-high": "#232a36",
+                      "on-secondary-fixed": "#181c22",
+                      "tertiary-fixed-dim": "#4cd6fb",
+                      "tertiary-fixed": "#b3ebff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "mono-data": ["JetBrains Mono"],
+                      "body-sm": ["Inter"],
+                      "headline-md": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "headline-lg": ["JetBrains Mono"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-bold": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Sidebar Navigation (Mandatory: SideNavBar) -->
+<aside class="fixed left-0 top-0 h-full overflow-y-auto bg-surface-container text-primary-fixed-dim h-screen w-64 flex flex-col border-r border-surface-bright z-50">
+<div class="p-margin-desktop mb-4">
+<h1 class="text-headline-md font-headline-md text-primary">RMG Electronics</h1>
+<p class="text-label-bold font-label-bold opacity-60">Enterprise Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-primary border-l-4 border-primary bg-surface-container-high transition-all opacity-90" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-bold font-label-bold">Global Metrics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-highest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-label-bold font-label-bold">Vendor Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-highest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home_repair_service</span>
+<span class="text-label-bold font-label-bold">Service Centers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-highest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-bold font-label-bold">Platform Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-gutter flex items-center gap-3 border-t border-surface-bright bg-surface-container-low">
+<img alt="Admin User Profile" class="w-8 h-8 rounded-full border border-primary-fixed-dim" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALqUu2E6BeL0jlR5EnfXgIauXwe43FSztHp0gccBp3QWchJoYrhIWyLl3e1JVJQ3UI-kRoYTahFGaP-71CfRaaqLawWWtC1-_nHurWenAr74h-iS-4opTH2Tv7hxSX6E9QXxnCKxjSQqcmFzu0d6EWCN6LJLyO0mkJkw41YFSQnjH7xm_2Ha-LxXm2r4KdntJlfAq_CCQc7-WimB8Mdb9F3yPhBYDSxwqcVsiizIuWx1n21B2M_wjsjpJhkgsmhnuHT1zDz3XoCdA"/>
+<div class="overflow-hidden">
+<p class="text-label-bold font-label-bold truncate">Admin User Profile</p>
+<p class="text-body-sm font-body-sm opacity-50">Enterprise Admin</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation (Mandatory: TopNavBar Enterprise Portal) -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 bg-surface-container-low border-b border-surface-bright z-40">
+<div class="flex items-center gap-gutter">
+<span class="text-headline-md font-headline-md text-primary">Enterprise Portal</span>
+<nav class="hidden md:flex gap-6 ml-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#">Consumer</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Enterprise</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-all">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-all">account_balance</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-all">help</span>
+</div>
+<button class="bg-primary text-surface-dim px-4 py-2 text-label-bold font-label-bold rounded hover:opacity-90 active:scale-95 transition-all">
+                    Create Quote
+                </button>
+</div>
+</header>
+<!-- Analytics Dashboard Scrollable Surface -->
+<section class="flex-1 overflow-y-auto p-margin-desktop space-y-6">
+<!-- Dashboard Header & Global Filters -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-primary-fixed">Global Analytics Hub</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Real-time GMV and Cohort performance monitoring</p>
+</div>
+<div class="flex gap-2">
+<div class="bg-surface-container px-3 py-2 border border-surface-bright rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+<span class="text-label-bold font-label-bold">Q3 2023 - Q1 2024</span>
+</div>
+<div class="bg-surface-container px-3 py-2 border border-surface-bright rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">public</span>
+<span class="text-label-bold font-label-bold">Multi-Region</span>
+</div>
+<button class="bg-surface-bright text-primary px-4 py-2 text-label-bold font-label-bold rounded border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+                        DRILL DOWN
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Stats Section -->
+<div class="bento-grid">
+<!-- GMV Main Chart -->
+<div class="col-span-8 bg-surface-container border border-surface-bright p-gutter rounded-lg relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-wider">Total GMV Performance</p>
+<h3 class="text-headline-md font-headline-md text-primary-fixed-dim mt-1">$148.2M <span class="text-status-success text-body-sm font-label-bold ml-2">↑ 14.2%</span></h3>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2"><span class="data-dot bg-data-viz-1"></span><span class="text-body-sm font-label-bold">Actual</span></div>
+<div class="flex items-center gap-2"><span class="data-dot bg-surface-bright border border-outline"></span><span class="text-body-sm font-label-bold">Forecast</span></div>
+</div>
+</div>
+<!-- Mock Data Viz: Multi-Region GMV -->
+<div class="h-[280px] w-full flex items-end gap-1 px-4">
+<!-- Generative bar chart simulation -->
+<div class="flex-1 bg-surface-variant rounded-t hover:bg-data-viz-1 transition-colors relative group/bar" style="height: 40%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-bright px-2 py-1 rounded text-body-sm hidden group-hover/bar:block">$12M</div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t hover:bg-data-viz-1 transition-colors" style="height: 55%;"></div>
+<div class="flex-1 bg-surface-variant rounded-t hover:bg-data-viz-1 transition-colors" style="height: 45%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 75%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 65%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 85%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 95%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 80%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 90%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 70%;"></div>
+<div class="flex-1 bg-data-viz-1 rounded-t" style="height: 60%;"></div>
+<div class="flex-1 bg-surface-bright/50 rounded-t border-t border-dashed border-outline" style="height: 65%;"></div>
+</div>
+<div class="flex justify-between mt-4 text-body-sm font-mono-data opacity-40">
+<span>OCT</span><span>NOV</span><span>DEC</span><span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span>
+</div>
+</div>
+<!-- Customer LTV -->
+<div class="col-span-4 bg-surface-container border border-surface-bright p-gutter rounded-lg">
+<p class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-4">Customer LTV Analysis</p>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="text-body-lg font-bold">Enterprise Tier</h4>
+<p class="text-body-sm opacity-50">Avg. 3.2y retention</p>
+</div>
+<span class="text-headline-md font-mono-data text-data-viz-1">$42.4k</span>
+</div>
+<div class="w-full bg-surface-dim h-2 rounded-full overflow-hidden">
+<div class="bg-data-viz-1 h-full" style="width: 82%;"></div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h4 class="text-body-lg font-bold">SMB Segment</h4>
+<p class="text-body-sm opacity-50">Avg. 1.8y retention</p>
+</div>
+<span class="text-headline-md font-mono-data text-data-viz-2">$18.1k</span>
+</div>
+<div class="w-full bg-surface-dim h-2 rounded-full overflow-hidden">
+<div class="bg-data-viz-2 h-full" style="width: 45%;"></div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-bright">
+<button class="w-full text-center text-label-bold font-label-bold text-primary-fixed-dim hover:underline uppercase tracking-tighter">View Cohort Drilldown</button>
+</div>
+</div>
+<!-- Growth Forecasts -->
+<div class="col-span-4 bg-surface-container border border-surface-bright p-gutter rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<p class="text-label-bold font-label-bold text-on-surface-variant uppercase">Category Growth</p>
+<span class="material-symbols-outlined text-primary/40">trending_up</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center bg-surface-dim p-3 rounded">
+<span class="text-body-md font-medium">Smart Infrastructure</span>
+<span class="text-status-success font-mono-data">+22.4%</span>
+</div>
+<div class="flex justify-between items-center bg-surface-dim p-3 rounded">
+<span class="text-body-md font-medium">Consumer IoT</span>
+<span class="text-status-warning font-mono-data">+4.1%</span>
+</div>
+<div class="flex justify-between items-center bg-surface-dim p-3 rounded">
+<span class="text-body-md font-medium">Semi-conductors</span>
+<span class="text-status-success font-mono-data">+18.9%</span>
+</div>
+<div class="flex justify-between items-center bg-surface-dim p-3 rounded">
+<span class="text-body-md font-medium">Legacy Components</span>
+<span class="text-status-error font-mono-data">-2.3%</span>
+</div>
+</div>
+</div>
+<!-- Retention Heatmap -->
+<div class="col-span-8 bg-surface-container border border-surface-bright p-gutter rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<p class="text-label-bold font-label-bold text-on-surface-variant uppercase">Retention Cohort Matrix (N+Mo)</p>
+<div class="flex gap-2">
+<div class="w-4 h-4 bg-data-viz-1 opacity-20"></div>
+<div class="w-4 h-4 bg-data-viz-1 opacity-60"></div>
+<div class="w-4 h-4 bg-data-viz-1 opacity-100"></div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-label-bold font-label-bold text-on-surface-variant opacity-60">
+<th class="pb-4 pr-4">COHORT</th>
+<th class="pb-4">SIZE</th>
+<th class="pb-4">M1</th>
+<th class="pb-4">M2</th>
+<th class="pb-4">M3</th>
+<th class="pb-4">M4</th>
+<th class="pb-4">M5</th>
+<th class="pb-4">M6</th>
+</tr>
+</thead>
+<tbody class="text-mono-data">
+<tr class="border-t border-surface-bright">
+<td class="py-3 pr-4 font-bold">JAN 23</td>
+<td class="py-3">1,240</td>
+<td class="py-3 bg-data-viz-1/90 text-surface-dim text-center">98%</td>
+<td class="py-3 bg-data-viz-1/70 text-center">84%</td>
+<td class="py-3 bg-data-viz-1/50 text-center">72%</td>
+<td class="py-3 bg-data-viz-1/40 text-center">68%</td>
+<td class="py-3 bg-data-viz-1/30 text-center">61%</td>
+<td class="py-3 bg-data-viz-1/20 text-center">55%</td>
+</tr>
+<tr class="border-t border-surface-bright">
+<td class="py-3 pr-4 font-bold">FEB 23</td>
+<td class="py-3">982</td>
+<td class="py-3 bg-data-viz-1/95 text-surface-dim text-center">99%</td>
+<td class="py-3 bg-data-viz-1/80 text-center">88%</td>
+<td class="py-3 bg-data-viz-1/60 text-center">79%</td>
+<td class="py-3 bg-data-viz-1/50 text-center">71%</td>
+<td class="py-3 bg-data-viz-1/40 text-center">64%</td>
+<td class="py-3 bg-data-viz-1/30 text-center">--</td>
+</tr>
+<tr class="border-t border-surface-bright">
+<td class="py-3 pr-4 font-bold">MAR 23</td>
+<td class="py-3">2,105</td>
+<td class="py-3 bg-data-viz-1/85 text-center">92%</td>
+<td class="py-3 bg-data-viz-1/65 text-center">77%</td>
+<td class="py-3 bg-data-viz-1/45 text-center">68%</td>
+<td class="py-3 bg-data-viz-1/35 text-center">59%</td>
+<td class="py-3 bg-data-viz-1/25 text-center">--</td>
+<td class="py-3 bg-data-viz-1/10 text-center">--</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Regional Map Data Visualization Area -->
+<div class="bg-surface-container border border-surface-bright p-gutter rounded-lg min-h-[400px] flex gap-margin-desktop relative overflow-hidden">
+<!-- Data Layers Sidebar -->
+<div class="w-64 shrink-0 flex flex-col gap-6 z-10">
+<h4 class="text-label-bold font-label-bold text-on-surface-variant uppercase">Regional Density</h4>
+<div class="space-y-4">
+<div class="p-4 bg-surface-dim border-l-4 border-data-viz-1 rounded-r">
+<p class="text-body-sm opacity-60">North America</p>
+<p class="text-headline-md font-mono-data">$64.2M</p>
+<div class="mt-2 flex items-center gap-1 text-status-success text-body-sm">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 8.4%
+                            </div>
+</div>
+<div class="p-4 bg-surface-dim border-l-4 border-data-viz-2 rounded-r">
+<p class="text-body-sm opacity-60">EMEA</p>
+<p class="text-headline-md font-mono-data">$41.8M</p>
+<div class="mt-2 flex items-center gap-1 text-status-warning text-body-sm">
+<span class="material-symbols-outlined text-[14px]">trending_flat</span> 1.2%
+                            </div>
+</div>
+<div class="p-4 bg-surface-dim border-l-4 border-data-viz-3 rounded-r">
+<p class="text-body-sm opacity-60">APAC</p>
+<p class="text-headline-md font-mono-data">$38.1M</p>
+<div class="mt-2 flex items-center gap-1 text-status-success text-body-sm">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 14.1%
+                            </div>
+</div>
+</div>
+</div>
+<!-- Abstract Map Visualization -->
+<div class="flex-1 bg-surface-dim rounded relative flex items-center justify-center overflow-hidden">
+<!-- Placeholder for Map Visualization -->
+<div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container via-transparent to-transparent"></div>
+<img class="w-full h-full object-cover opacity-80 mix-blend-screen" data-alt="A highly detailed and sophisticated dark-mode digital map of the world representing global electronic logistics. The map features a deep navy and obsidian palette with continents outlined in glowing cyan technical lines. Dynamic data arcs and pulsing nodes in vibrant teal and magenta connect major economic hubs like San Francisco, London, and Tokyo. The lighting is low-key with sharp, futuristic digital highlights, creating an atmosphere of advanced enterprise monitoring and high-speed data flow." data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHI-WCiTef-AI9X3VvfXgfx6uJgyT1WqEKotg8-BQOXOWURoEgC9vLetmXnpK2llf6oc3AsXG8OkjOXdkX4HeIM7iZdhiHmcvcmjqlOSGdpsgC8oIaIljOER2qnm3ZQdYkRi1XkWDCLsIEZKS7JTcg3qjwYUFjsURU1VO7265x-2rJJsghXgGiwbNFCNmoAvHfA8KfNL3GSQV_NH49LiIqJPCA875KY5ccrny_15fGIWJweUzObfELRTaSLffqIYuqQfkqR3BYeIc"/>
+<!-- Floating Map Data Points -->
+<div class="absolute top-1/4 left-1/4 animate-pulse">
+<div class="bg-surface-bright/90 backdrop-blur-md p-2 rounded border border-data-viz-1 text-xs font-mono-data">
+                            NOR-AM: +8.4% (ACTIVE)
+                        </div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 animate-pulse" style="animation-delay: 1s;">
+<div class="bg-surface-bright/90 backdrop-blur-md p-2 rounded border border-data-viz-3 text-xs font-mono-data">
+                            APAC: CRITICAL GROWTH
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Status Bar -->
+<footer class="h-8 bg-surface-container-lowest border-t border-surface-bright px-gutter flex items-center justify-between text-body-sm font-mono-data text-on-surface-variant opacity-60">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-status-success"></span> LIVE SYNC: ACTIVE</span>
+<span>LATENCY: 14MS</span>
+</div>
+<div class="flex items-center gap-4">
+<span>V: 2.4.1-PRO</span>
+<span>SYSTEM STABLE</span>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Mandatory Suppression check: Dashboard/Home logic) -->
+<button class="fixed bottom-margin-desktop right-margin-desktop bg-primary text-surface-dim w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined text-[28px]">summarize</span>
+<span class="absolute right-16 bg-surface-bright text-primary px-3 py-1 rounded text-label-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">EXPORT REPORT</span>
+</button>
+<script>
+        // Micro-interactions for the "Bento Grid" items
+        document.querySelectorAll('.bento-grid > div').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(8, 253, 234, 0.4)';
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '';
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Simple mock search functionality or log interaction
+        console.log("RMG Global Analytics Hub initialized. Technical Precision Mode: Active.");
+    </script>
+</body></html>

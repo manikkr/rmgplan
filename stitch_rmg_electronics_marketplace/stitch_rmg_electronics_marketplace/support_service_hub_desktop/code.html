@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Support &amp; Service Hub | RMG Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121414;
+            color: #e2e2e2;
+        }
+        .glass-card {
+            background: rgba(29, 29, 29, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #4c4546;
+        }
+        .bento-item {
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;
+        }
+        .bento-item:hover {
+            background-color: #1e2020;
+            transform: translateY(-2px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#333535",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "primary-fixed": "#e2e2e2",
+                        "outline": "#988e90",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#282a2b",
+                        "background": "#121414",
+                        "inverse-primary": "#5e5e5e",
+                        "tertiary": "#00decb",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#474747",
+                        "inverse-surface": "#e2e2e2",
+                        "inverse-on-surface": "#2f3131",
+                        "on-tertiary-container": "#008478",
+                        "on-secondary-fixed-variant": "#474746",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#41fce7",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary-fixed": "#00201c",
+                        "error-container": "#93000a",
+                        "outline-variant": "#4c4546",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-primary-container": "#757575",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-dim": "#121414",
+                        "surface": "#121414",
+                        "surface-container-lowest": "#0c0f0f",
+                        "surface-bright": "#38393a",
+                        "tertiary-container": "#000000",
+                        "secondary-container": "#474746",
+                        "on-surface-variant": "#cfc4c5",
+                        "on-background": "#e2e2e2",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "tertiary-fixed-dim": "#00decb",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-container-low": "#1a1c1c",
+                        "primary-container": "#000000",
+                        "on-tertiary": "#003732",
+                        "on-surface": "#e2e2e2",
+                        "primary": "#c6c6c6",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container": "#1e2020",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "surface-variant": "#333535",
+                        "on-error": "#690005",
+                        "on-primary": "#303030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-desktop": "2.5rem",
+                        "xl": "2rem",
+                        "sm": "0.5rem",
+                        "md": "1rem",
+                        "margin-mobile": "1rem",
+                        "lg": "1.5rem",
+                        "xs": "0.25rem",
+                        "gutter": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "price-display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "price-display": ["20px", {"lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "12px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-tertiary selection:text-tertiary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b border-outline-variant flex items-center justify-between px-margin-desktop py-md max-w-full">
+<div class="flex items-center gap-lg">
+<span class="font-headline-lg text-headline-lg font-black text-on-background uppercase tracking-tighter">RMG Electronics</span>
+<nav class="hidden md:flex items-center gap-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Laptops</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Components</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Mobile</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Audio</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Gaming</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-tertiary transition-colors duration-200" href="#">Deals</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden lg:flex items-center bg-surface-container-high px-md py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48 text-on-surface" placeholder="Search for products..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:text-tertiary transition-transform active:scale-95 duration-100"><span class="material-symbols-outlined">location_on</span></button>
+<button class="p-xs hover:text-tertiary transition-transform active:scale-95 duration-100"><span class="material-symbols-outlined">person</span></button>
+<button class="p-xs hover:text-tertiary transition-transform active:scale-95 duration-100"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+</header>
+<main class="pt-24 min-h-screen">
+<!-- Hero Section -->
+<section class="px-margin-desktop py-xl">
+<div class="relative overflow-hidden rounded-xl h-[360px] flex items-center justify-center text-center bg-surface-container-low border border-outline-variant">
+<div class="absolute inset-0 opacity-20">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of high-tech circuit boards with glowing cyan and teal light patterns tracing through complex electronic pathways. The atmosphere is professional and industrial, with deep black shadows and sharp metallic highlights. The lighting is cold and clinical, emphasizing the enterprise-grade technology of RMG Electronics in a dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCttTbWIT3zp5suwsf8dmcpuQM6J17Dx2KYwaKz0SWQIYtGWq5nFLp3fA4uSPWJ4xmNk-JaiNbJ4AOmdhhV3w6fRh1rJi-a8fSMoF7o8Do_3b0vtyaH8WD6JCq1bVLj12OO_RSnmz-WqZlXUYl14pyiazvI2nZ8jOvqrDrPh8QkNQDZe2p2h_skV79jbfK7_8YyMIXTpahYuptS6Pei4NSZDGK5NajNHZZnTrWcK34i0wpadweOg7CREyhdZpWfm6JnyiQcf5KjWQ"/>
+</div>
+<div class="relative z-10 max-w-2xl px-md">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-md">Support &amp; Service Hub</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Get professional assistance, technical documentation, and repair services for your enterprise-grade hardware.</p>
+<div class="relative max-w-xl mx-auto">
+<div class="flex items-center bg-surface-container-highest p-xs rounded-lg border-2 border-tertiary shadow-xl">
+<span class="material-symbols-outlined px-md text-tertiary">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 py-md text-headline-md text-on-surface" placeholder="How can we help you?" type="text"/>
+<button class="bg-tertiary text-on-tertiary px-xl py-md rounded-md font-label-bold text-label-bold uppercase tracking-widest hover:brightness-110 transition-all">Search</button>
+</div>
+<div class="mt-md flex flex-wrap justify-center gap-sm">
+<span class="text-body-sm text-on-surface-variant">Popular:</span>
+<a class="text-body-sm text-tertiary hover:underline" href="#">Firmware updates</a>
+<a class="text-body-sm text-tertiary hover:underline" href="#">Warranty lookup</a>
+<a class="text-body-sm text-tertiary hover:underline" href="#">BIOS settings</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Services Grid -->
+<section class="px-margin-desktop py-lg">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-full">
+<!-- Track Repair -->
+<div class="md:col-span-8 glass-card rounded-xl p-lg flex flex-col justify-between bento-item group cursor-pointer min-h-[240px]">
+<div class="flex justify-between items-start">
+<div class="bg-surface-container-high p-md rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-4xl">build</span>
+</div>
+<span class="font-label-bold text-label-bold text-tertiary border border-tertiary/30 px-sm py-xs rounded">Live Status</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Track Repair Status</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your Case ID or RMA number to see real-time updates from our service centers.</p>
+</div>
+<div class="mt-md flex gap-sm">
+<input class="flex-1 bg-surface-container-lowest border-outline-variant rounded-md focus:border-tertiary focus:ring-0 text-body-md" placeholder="Case ID (e.g. RMG-10293)" type="text"/>
+<button class="bg-surface-container-highest px-xl rounded-md font-label-bold text-label-bold text-on-surface border border-outline-variant group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">Track</button>
+</div>
+</div>
+<!-- Warranty Extension -->
+<div class="md:col-span-4 glass-card rounded-xl p-lg flex flex-col justify-between bento-item group cursor-pointer bg-gradient-to-br from-surface-container-low to-surface-container-lowest">
+<div class="bg-surface-container-high w-14 h-14 flex items-center justify-center rounded-lg mb-md">
+<span class="material-symbols-outlined text-tertiary text-3xl">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Warranty Extension</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Protect your investment for up to 5 additional years with our Care+ plans.</p>
+</div>
+<a class="mt-md flex items-center gap-xs font-label-bold text-label-bold text-tertiary" href="#">
+                        LEARN MORE <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Register Product -->
+<div class="md:col-span-4 glass-card rounded-xl p-lg flex flex-col justify-between bento-item group cursor-pointer min-h-[200px]">
+<div class="bg-surface-container-high w-14 h-14 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-3xl">app_registration</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Register a Product</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Unlock faster support and stay notified about critical security updates.</p>
+</div>
+</div>
+<!-- Download Drivers -->
+<div class="md:col-span-8 glass-card rounded-xl p-lg flex flex-col justify-between bento-item group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container-high p-md rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-3xl">download</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Download Drivers &amp; BIOS</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Find the latest software for your hardware configurations.</p>
+</div>
+</div>
+<div class="mt-lg grid grid-cols-2 lg:grid-cols-4 gap-sm">
+<div class="p-sm bg-surface-container-lowest border border-outline-variant rounded flex flex-col items-center hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">laptop_mac</span>
+<span class="text-label-bold font-label-bold">Laptops</span>
+</div>
+<div class="p-sm bg-surface-container-lowest border border-outline-variant rounded flex flex-col items-center hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">memory</span>
+<span class="text-label-bold font-label-bold">Components</span>
+</div>
+<div class="p-sm bg-surface-container-lowest border border-outline-variant rounded flex flex-col items-center hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">speaker</span>
+<span class="text-label-bold font-label-bold">Audio</span>
+</div>
+<div class="p-sm bg-surface-container-lowest border border-outline-variant rounded flex flex-col items-center hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">settings_input_component</span>
+<span class="text-label-bold font-label-bold">Others</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Support Hubs -->
+<section class="px-margin-desktop py-xl">
+<div class="flex items-center justify-between mb-lg border-b border-outline-variant pb-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Browse by Product Category</h2>
+<a class="font-label-bold text-label-bold text-tertiary hover:underline" href="#">View All Categories</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<!-- Laptops -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">laptop</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Laptops</span>
+</div>
+<!-- Mobiles -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">smartphone</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Mobiles</span>
+</div>
+<!-- Audio -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">headphones</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Audio</span>
+</div>
+<!-- Appliances -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">kitchen</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Appliances</span>
+</div>
+<!-- Gaming -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">sports_esports</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Gaming</span>
+</div>
+<!-- Accessories -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-md group-hover:border-tertiary group-hover:bg-tertiary/5 transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary text-4xl transition-colors">mouse</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface text-center">Accessories</span>
+</div>
+</div>
+</section>
+<!-- Technical Knowledge Base Section -->
+<section class="px-margin-desktop py-xl bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<div class="lg:col-span-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Technical Resources</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Access documentation, troubleshooting guides, and expert community advice for all RMG products.</p>
+<div class="space-y-sm">
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<span class="text-body-md font-label-bold">Service Manuals</span>
+</div>
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary">groups</span>
+<span class="text-body-md font-label-bold">Community Forums</span>
+</div>
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary">video_library</span>
+<span class="text-body-md font-label-bold">Instructional Videos</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Knowledge Card 1 -->
+<div class="bg-surface-container-high border border-outline-variant rounded-lg overflow-hidden group">
+<div class="h-32 bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist high-angle shot of professional electronic diagnostic tools and a disassembled laptop on a dark gray ESD mat. The scene is lit with bright, neutral lighting that emphasizes precision and technical repair. The overall tone is corporate and reliable, with focused depth of field on a multimeter display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzZFqpAp1NE8YHrbLwN0npfRh0E52qwQ8rrxSuzAqWZGONeE_nka1h40OCrabnSvQLA1XnIFbCG2GDU1q4jcwIDuyxJ-CQq5haAQpiI_0Kc3B1R1UHxMJbYVpN-ed1H0bsuaj_kFiKHJAEzyf4bKVp5dn2LEWC8vLB1kFCvZij0Ux5RWjOwbB8x3DQ_6iaapxcniqhcN9FVPT9hsA3HXNaNOdzyKo2koK686S1yvTh_31XCr7EXnfVoguOxP0ZGto-jRaPwZHEuCQ"/>
+</div>
+<div class="p-md">
+<h4 class="font-label-bold text-label-bold text-tertiary mb-xs">TROUBLESHOOTING</h4>
+<h3 class="font-headline-md text-headline-md mb-sm">Handling Thermal Throttling in RMG Series 7 Laptops</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Learn how to optimize your cooling fan curves and replace thermal paste for peak performance.</p>
+</div>
+</div>
+<!-- Knowledge Card 2 -->
+<div class="bg-surface-container-high border border-outline-variant rounded-lg overflow-hidden group">
+<div class="h-32 bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of a professional workstation featuring high-end audio interfaces and studio monitors. The lighting is dark and cinematic with teal ambient glows reflecting off metallic control knobs and faders. The aesthetic is sophisticated and professional, capturing a high-fidelity audio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB16bh98XyWrD0pJwsA0COS5_82gVsxbIJtuyRlIJvpgxsxj3JJWeMvdzR4aA021xDLXKfglQrmOS7pk4g9O7ItFpsoTVzc0733qO_3fH0d-LkF9LupZtkPbZIhvRgfI4jOw1hpC3NePK5z0cKzPrEtjW_u_WAqhfqgslBSPnAlPMmDGNewMpsz3K8FHYXeefqYFi9YLr_qmEt4uwU-44htoevvs4LpKRofJNiSBk4QEfFLTFxMX5c8r9dIJmqMhUvSxMjwzRFYi7w"/>
+</div>
+<div class="p-md">
+<h4 class="font-label-bold text-label-bold text-tertiary mb-xs">AUDIO GUIDES</h4>
+<h3 class="font-headline-md text-headline-md mb-sm">Configuring Low-Latency ASIO Drivers for Professional Use</h3>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Step-by-step guide to setting up your RMG Audio Interface for digital audio workstations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-xl bg-surface-container-lowest border-t border-outline-variant grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter px-margin-desktop py-xl">
+<div class="col-span-2">
+<span class="font-headline-md text-headline-md text-on-surface block mb-md">RMG Electronics</span>
+<p class="text-body-sm text-on-surface-variant max-w-xs mb-lg">© 2024 RMG Electronics. Enterprise Grade Systems. Providing industry-leading support for professional infrastructure.</p>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-md uppercase">Support</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Support Center</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Warranty Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-md uppercase">Legal</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Bulk Sales</a></li>
+</ul>
+</div>
+<div class="col-span-2 flex flex-col justify-end">
+<div class="flex gap-md mb-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary cursor-pointer">social_leaderboard</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary cursor-pointer">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-tertiary cursor-pointer">video_camera_front</span>
+</div>
+<p class="text-body-sm text-secondary">Global Support Hotline: 1-800-RMG-TECH</p>
+</div>
+</footer>
+<script>
+        // Subtle micro-interaction for the search bar
+        const searchInput = document.querySelector('input[placeholder="How can we help you?"]');
+        searchInput?.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('shadow-[0_0_20px_rgba(0,222,203,0.3)]');
+        });
+        searchInput?.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('shadow-[0_0_20px_rgba(0,222,203,0.3)]');
+        });
+
+        // Add scroll animation effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-background/90', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('bg-background/90', 'backdrop-blur-md');
+            }
+        });
+    </script>
+</body></html>

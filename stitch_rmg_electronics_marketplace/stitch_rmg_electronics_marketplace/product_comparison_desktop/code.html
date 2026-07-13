@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .spec-row:nth-child(even) { background-color: #f3f3f3; }
+        .sticky-comparison-header {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .best-value-badge {
+            background-color: #009487;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .hide-same .row-identical { display: none !important; }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"primary-fixed": "#e2e2e2", "on-error-container": "#ffdad6", outline: "#988e90", "surface-container-low": "#1a1c1c", "on-surface": "#e2e2e2", tertiary: "#00decb", "on-error": "#690005", "on-background": "#e2e2e2", "tertiary-fixed": "#41fce7", "inverse-surface": "#e2e2e2", error: "#ffb4ab", "on-surface-variant": "#cfc4c5", "surface-container": "#1e2020", "surface-container-high": "#282a2b", "on-primary-fixed": "#1b1b1b", "surface-container-lowest": "#0c0f0f", "surface-bright": "#38393a", "on-tertiary-fixed-variant": "#005048", "on-secondary-fixed": "#1b1b1b", "on-secondary-fixed-variant": "#474746", "on-primary": "#303030", "surface-tint": "#c6c6c6", "inverse-primary": "#5e5e5e", background: "#121414", "surface-dim": "#121414", "surface-variant": "#333535", "primary-fixed-dim": "#c6c6c6", "primary-container": "#000000", "secondary-container": "#474746", surface: "#121414", primary: "#c6c6c6", "tertiary-fixed-dim": "#00decb", "secondary-fixed-dim": "#c8c6c5", "on-tertiary-fixed": "#00201c", "on-tertiary": "#003732", "tertiary-container": "#000000", "surface-container-highest": "#333535", "secondary-fixed": "#e5e2e1", "on-secondary-container": "#b7b5b4", "on-secondary": "#303030", "on-primary-container": "#757575", "outline-variant": "#4c4546", "on-primary-fixed-variant": "#474747", "error-container": "#93000a", "inverse-on-surface": "#2f3131", "on-tertiary-container": "#008478", secondary: "#c8c6c5"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {lg: "1.5rem", xl: "2rem", "margin-mobile": "1rem", base: "4px", sm: "0.5rem", gutter: "1rem", xs: "0.25rem", "margin-desktop": "2.5rem", md: "1rem"}, fontFamily: {"headline-md": ["Inter"], "headline-xl": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "label-bold": ["Inter"], "price-display": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"body-sm": ["12px", {lineHeight: "16px", fontWeight: "400"}], "body-md": ["14px", {lineHeight: "20px", fontWeight: "400"}], "label-bold": ["12px", {lineHeight: "12px", fontWeight: "700"}], "headline-md": ["18px", {lineHeight: "24px", fontWeight: "600"}], "headline-lg": ["24px", {lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700"}], "headline-xl": ["32px", {lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700"}], "price-display": ["20px", {lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "700"}]}}}};</script>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<nav class="flex flex-col w-full px-margin-desktop py-md gap-sm bg-primary sticky top-0 z-50 border-b border-outline-variant shadow-sm">
+<div class="flex items-center justify-between">
+<div class="font-headline-xl text-headline-xl text-on-primary font-bold tracking-tighter">RMG Electronics</div>
+<div class="flex-1 max-w-xl mx-xl">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-on-surface px-md py-sm rounded-lg border-2 border-transparent focus:border-tertiary-fixed-dim outline-none transition-all" placeholder="Search electronics, gadgets, and more..." type="text"/>
+<button class="absolute right-2 text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-80">location_on</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-80">person</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-80">favorite</span>
+<span class="material-symbols-outlined text-on-primary cursor-pointer hover:opacity-80">shopping_cart</span>
+</div>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">Mobiles</a>
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">Laptops</a>
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">TVs</a>
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">Audio</a>
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">Appliances</a>
+<a class="font-label-bold text-label-bold text-on-primary hover:text-on-tertiary-container transition-colors" href="#">Offers</a>
+</div>
+</nav>
+<main class="px-margin-desktop py-lg max-w-[1440px] mx-auto">
+<!-- Breadcrumb -->
+<div class="flex items-center gap-xs mb-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-body-sm text-body-sm text-on-surface font-bold">Compare</span>
+</div>
+<div class="flex items-center justify-between mb-xl">
+<h1 class="font-headline-lg text-headline-lg">Compare Products</h1>
+<div class="flex items-center gap-md bg-surface-container px-md py-sm rounded-lg">
+<span class="font-label-bold text-label-bold">Highlight Differences</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="diffToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-outline peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-on-tertiary-container"></div>
+</label>
+</div>
+</div>
+<!-- Sticky Header with Product Slots -->
+<div class="sticky top-[104px] z-40 bg-surface-container-lowest border-x border-t border-outline-variant rounded-t-xl overflow-hidden transition-all duration-300" id="sticky-header">
+<div class="grid grid-cols-[240px_repeat(4,1fr)]">
+<div class="p-lg flex flex-col justify-end">
+<div class="font-label-bold text-label-bold text-on-tertiary-container uppercase tracking-widest">Specifications</div>
+</div>
+<!-- Product Slot 1 -->
+<div class="p-md border-l border-outline-variant group relative">
+<button class="absolute top-2 right-2 text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col items-center gap-sm">
+<img alt="iPhone 15 Pro" class="h-24 object-contain" data-alt="A professional studio product shot of the iPhone 15 Pro in Titanium Blue. The device is captured at a slight angle showing its sleek metallic edges and the advanced triple-lens camera system. The lighting is high-key and crisp, emphasizing the premium build quality. The background is a clean, neutral gray, fitting a high-end corporate electronics marketplace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0pFM20aSNRsjh59okush8U0qdjs4WbSg84-jlCquo86nuEg4V9TknOduSW4N5oqgcQrIrJ610w1Gm_TuG79S3Fbh8mOez2FkOA_cBqkEts8OwXRiU4gDPZG6lMfINQ0LgXpDx20ndNZx74lO6Uqn-VvWOJsSo4Y0dlDY15f6KfEapBe4dVRi3moqhIrVsTvvyaveW3Gru4boEbYbcEiFT3HlRpUElb2OL5FCS8GMOFo49KATGNF8pDflgsPZVOK98OGQYJqTi2es"/>
+<div class="text-center">
+<h3 class="font-label-bold text-label-bold line-clamp-1">iPhone 15 Pro</h3>
+<div class="flex items-center justify-center gap-xs my-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm">4.8 (1.2k)</span>
+</div>
+<div class="font-price-display text-price-display text-primary">$999</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-xs rounded font-label-bold text-label-bold hover:bg-on-tertiary-container transition-all active:scale-95">BUY NOW</button>
+</div>
+</div>
+<!-- Product Slot 2 -->
+<div class="p-md border-l border-outline-variant relative">
+<button class="absolute top-2 right-2 text-outline-variant hover:text-error">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col items-center gap-sm">
+<img alt="Samsung S24 Ultra" class="h-24 object-contain" data-alt="Close-up product photography of the Samsung Galaxy S24 Ultra in Titanium Black. The shot highlights the sharp, industrial design and the prominent quad-camera array. Soft cinematic side-lighting creates depth and highlights the matte finish of the device. The overall mood is modern, professional, and technologically superior, set against a dark minimalist studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJRkosDOO9dvYzb3rbHk2PCPjdKxa7UTBUe-OjjVH1vR8XO_STzNnHpVCvHwAl19XNgc_b9zDNZQIFiuBWxtnQpRRzjzVCKsxRLWTq6LML033fiMvT8qZSbgHTHf93wIH0YCmDHI3v0ff8L0tjAGJbhwpc9MUk-yzyyh3Re5Z-C2iMtxEQJAqkwZCqF2fw9x7EMMKVwO2-zWYBZJv_VO3KyVPvSCO6-unqyq6B8SZL5ZhIGV9hUCR-wkpTkals4BP1dSAy6N5bA7I"/>
+<div class="text-center">
+<h3 class="font-label-bold text-label-bold line-clamp-1">Samsung S24 Ultra</h3>
+<div class="flex items-center justify-center gap-xs my-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm">4.9 (850)</span>
+</div>
+<div class="font-price-display text-price-display text-primary">$1,299</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-xs rounded font-label-bold text-label-bold hover:bg-on-tertiary-container transition-all active:scale-95">BUY NOW</button>
+</div>
+</div>
+<!-- Product Slot 3 -->
+<div class="p-md border-l border-outline-variant relative">
+<button class="absolute top-2 right-2 text-outline-variant hover:text-error">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col items-center gap-sm">
+<img alt="Pixel 8 Pro" class="h-24 object-contain" data-alt="A clean, minimalist product shot of the Google Pixel 8 Pro in Bay Blue. The unique horizontal camera bar is the focal point, illuminated by soft diffuse lighting that minimizes harsh shadows. The aesthetic is friendly yet high-tech, with a focus on smooth textures and soft-touch materials. The image communicates a sophisticated, modern light-mode design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3AgaPhHsWCdU0Zzyypi8yxGFyFSdb30ExSmQ5WSo-smSTa5CJVFJUP9rbTrUQy4loVvOZGFTZZ44ul8tSbgL7YTUjisGq2RC_SCewa0e8djgBlPuNTw6M82v7h40ItKclGLZ888ZXw2sdTlPkUFg3Ktg9ZYrgHDW2I_SAMykVIVL0rsIpjVLXwZCLozgsHylrkLSZtw2LttoUJIDG5_dS_ZB8P8KbTnwfU-yPQx_IJn0iLwF13qfhFnl-bmvlBE0pcuMVTgs08WY"/>
+<div class="text-center">
+<h3 class="font-label-bold text-label-bold line-clamp-1">Pixel 8 Pro</h3>
+<div class="flex items-center justify-center gap-xs my-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm">4.6 (560)</span>
+</div>
+<div class="font-price-display text-price-display text-primary">$899</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-xs rounded font-label-bold text-label-bold hover:bg-on-tertiary-container transition-all active:scale-95">BUY NOW</button>
+</div>
+</div>
+<!-- Product Slot 4 -->
+<div class="p-md border-l border-outline-variant relative">
+<button class="absolute top-2 right-2 text-outline-variant hover:text-error">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col items-center gap-sm">
+<img alt="OnePlus 12" class="h-24 object-contain" data-alt="Premium high-fidelity product imagery of the OnePlus 12 in Flowy Emerald. The textured glass back ripples in the light, showcasing the Hasselblad camera module. The lighting is dramatic and precise, highlighting the premium glass and metal construction. The style is professional and high-contrast, fitting for an enterprise-grade electronics marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdRn5Z1z0d-mW1BC2VX7ZWwGkKkkHtYkmlAlug-5pS2G7j_nk1fPtGfbatCERwIfLcEpEOUm93MOGZpA1IFq9cMcDZm40TxsgMRKMqS-6wC_oT9kKzXjXFtYV6C4CRdd3jFmajsw1RSWWO9YQ5H9rYzXN-Hnv5geZOfp88qaoho9kr7ErXa_PdTkIRS5AQ7k3b6XozI1vkqedrJqVqK3iLG9_nNeIDGfte7hawFagzkZgUYAWzr3KhiL0Fe4htDe58M5S-17TjtEE"/>
+<div class="text-center">
+<h3 class="font-label-bold text-label-bold line-clamp-1">OnePlus 12</h3>
+<div class="flex items-center justify-center gap-xs my-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm">4.7 (320)</span>
+</div>
+<div class="font-price-display text-price-display text-primary">$799</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-xs rounded font-label-bold text-label-bold hover:bg-on-tertiary-container transition-all active:scale-95">BUY NOW</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Comparison Table -->
+<div class="border-x border-b border-outline-variant rounded-b-xl overflow-hidden mb-xl" id="specTable">
+<!-- Category: General -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">General</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center row-identical">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Operating System</div>
+<div class="p-lg font-body-md text-body-md">iOS 17</div>
+<div class="p-lg font-body-md text-body-md">Android 14</div>
+<div class="p-lg font-body-md text-body-md">Android 14</div>
+<div class="p-lg font-body-md text-body-md">Android 14</div>
+</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Launch Date</div>
+<div class="p-lg font-body-md text-body-md">Sept 2023</div>
+<div class="p-lg font-body-md text-body-md">Jan 2024</div>
+<div class="p-lg font-body-md text-body-md">Oct 2023</div>
+<div class="p-lg font-body-md text-body-md">Dec 2023</div>
+</div>
+<!-- Category: Display -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">Display</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Screen Size</div>
+<div class="p-lg font-body-md text-body-md">6.1-inch</div>
+<div class="p-lg font-body-md text-body-md font-bold">6.8-inch <span class="best-value-badge ml-xs">Best</span></div>
+<div class="p-lg font-body-md text-body-md">6.7-inch</div>
+<div class="p-lg font-body-md text-body-md">6.82-inch</div>
+</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center row-identical">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Refresh Rate</div>
+<div class="p-lg font-body-md text-body-md">120Hz LTPO</div>
+<div class="p-lg font-body-md text-body-md">120Hz LTPO</div>
+<div class="p-lg font-body-md text-body-md">120Hz LTPO</div>
+<div class="p-lg font-body-md text-body-md">120Hz LTPO</div>
+</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Peak Brightness</div>
+<div class="p-lg font-body-md text-body-md">2000 nits</div>
+<div class="p-lg font-body-md text-body-md">2600 nits</div>
+<div class="p-lg font-body-md text-body-md">2400 nits</div>
+<div class="p-lg font-body-md text-body-md font-bold">4500 nits <span class="best-value-badge ml-xs">Best</span></div>
+</div>
+<!-- Category: Performance -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">Performance</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Chipset</div>
+<div class="p-lg font-body-md text-body-md font-bold">A17 Pro (3nm) <span class="best-value-badge ml-xs">Top</span></div>
+<div class="p-lg font-body-md text-body-md">SD 8 Gen 3 (4nm)</div>
+<div class="p-lg font-body-md text-body-md">Google Tensor G3</div>
+<div class="p-lg font-body-md text-body-md">SD 8 Gen 3 (4nm)</div>
+</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">RAM</div>
+<div class="p-lg font-body-md text-body-md">8GB</div>
+<div class="p-lg font-body-md text-body-md">12GB</div>
+<div class="p-lg font-body-md text-body-md">12GB</div>
+<div class="p-lg font-body-md text-body-md font-bold">16GB <span class="best-value-badge ml-xs">Value</span></div>
+</div>
+<!-- Category: Camera -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">Camera</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Main Camera</div>
+<div class="p-lg font-body-md text-body-md">48 MP</div>
+<div class="p-lg font-body-md text-body-md font-bold">200 MP <span class="best-value-badge ml-xs">Pro</span></div>
+<div class="p-lg font-body-md text-body-md">50 MP</div>
+<div class="p-lg font-body-md text-body-md">50 MP</div>
+</div>
+<!-- Category: Battery -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">Battery &amp; Charging</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">Fast Charging</div>
+<div class="p-lg font-body-md text-body-md">27W wired</div>
+<div class="p-lg font-body-md text-body-md">45W wired</div>
+<div class="p-lg font-body-md text-body-md">30W wired</div>
+<div class="p-lg font-body-md text-body-md font-bold">100W SuperVOOC <span class="best-value-badge ml-xs">Extreme</span></div>
+</div>
+<!-- Category: Connectivity -->
+<div class="bg-surface-container-high px-lg py-sm font-label-bold text-label-bold uppercase text-on-surface-variant tracking-wider border-y border-outline-variant">Connectivity</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center row-identical">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">5G Support</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+</div>
+<div class="grid grid-cols-[240px_repeat(4,1fr)] spec-row items-center row-identical">
+<div class="p-lg font-body-md text-body-md font-semibold text-secondary">NFC</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+<div class="p-lg font-body-md text-body-md">Yes</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-lg text-left bg-primary text-on-primary">
+<div>
+<div class="font-headline-md text-headline-md text-on-primary mb-md">RMG Electronics</div>
+<p class="font-body-sm text-body-sm opacity-70">Elevating your tech lifestyle with the latest in electronics and enterprise solutions. Reliability and precision in every click.</p>
+</div>
+<div>
+<div class="font-label-bold text-label-bold mb-md uppercase tracking-wider">Shopping</div>
+<ul class="flex flex-col gap-sm font-body-sm text-body-sm">
+<li><a class="hover:underline opacity-80" href="#">Store Locator</a></li>
+<li><a class="hover:underline opacity-80" href="#">Track Order</a></li>
+<li><a class="hover:underline opacity-80" href="#">Easy Returns</a></li>
+<li><a class="hover:underline opacity-80" href="#">Warranty Support</a></li>
+</ul>
+</div>
+<div>
+<div class="font-label-bold text-label-bold mb-md uppercase tracking-wider">Company</div>
+<ul class="flex flex-col gap-sm font-body-sm text-body-sm">
+<li><a class="hover:underline opacity-80" href="#">About Us</a></li>
+<li><a class="hover:underline opacity-80" href="#">Careers</a></li>
+<li><a class="hover:underline opacity-80" href="#">Terms of Service</a></li>
+<li><a class="hover:underline opacity-80" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<div class="font-label-bold text-label-bold mb-md uppercase tracking-wider">Support</div>
+<ul class="flex flex-col gap-sm font-body-sm text-body-sm">
+<li><a class="hover:underline opacity-80" href="#">Help Center</a></li>
+<li><a class="hover:underline opacity-80" href="#">Contact Us</a></li>
+<li><a class="hover:underline opacity-80" href="#">Bulk Enquiries</a></li>
+<li><a class="hover:underline opacity-80" href="#">Technical Advice</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 border-t border-white/10 pt-lg mt-lg flex justify-between items-center">
+<span class="font-body-sm text-body-sm opacity-60">© 2024 RMG Electronics. All rights reserved.</span>
+<div class="flex gap-md">
+<span class="material-symbols-outlined cursor-pointer hover:text-tertiary-fixed">brand_family</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-tertiary-fixed">public</span>
+</div>
+</div>
+</footer>
+<script>
+        // Toggle Logic for Identical Specs
+        const diffToggle = document.getElementById('diffToggle');
+        const specTable = document.getElementById('specTable');
+        
+        diffToggle.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                specTable.classList.add('hide-same');
+            } else {
+                specTable.classList.remove('hide-same');
+            }
+        });
+
+        // Dynamic Header Height Adjustment on Scroll
+        window.addEventListener('scroll', () => {
+            const stickyHeader = document.getElementById('sticky-header');
+            const scrollPos = window.scrollY;
+            
+            if (scrollPos > 100) {
+                stickyHeader.classList.add('sticky-comparison-header');
+            } else {
+                stickyHeader.classList.remove('sticky-comparison-header');
+            }
+        });
+    </script>
+</body></html>

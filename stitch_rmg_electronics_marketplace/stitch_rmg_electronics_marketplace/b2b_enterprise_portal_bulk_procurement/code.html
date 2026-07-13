@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RMG Enterprise Portal | Bulk Procurement</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#003732",
+                        "secondary-fixed-dim": "#c3c6cf",
+                        "on-surface-variant": "#b9cac6",
+                        "on-primary-fixed-variant": "#005049",
+                        "surface": "#0c141e",
+                        "on-tertiary-fixed-variant": "#004e5f",
+                        "inverse-primary": "#006a62",
+                        "outline": "#839491",
+                        "surface-dim": "#0c141e",
+                        "surface-container": "#18202b",
+                        "inverse-on-surface": "#29313c",
+                        "background": "#0c141e",
+                        "secondary-container": "#454950",
+                        "on-tertiary-container": "#006e85",
+                        "secondary-fixed": "#dfe2eb",
+                        "on-tertiary": "#003642",
+                        "on-primary-fixed": "#00201d",
+                        "on-surface": "#dbe3f2",
+                        "surface-container-high": "#232a36",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "primary-container": "#08fdea",
+                        "tertiary-container": "#b3ebff",
+                        "surface-container-low": "#141c27",
+                        "primary-fixed-dim": "#00decd",
+                        "status-warning": "#F59E0B",
+                        "tertiary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#2d3541",
+                        "inverse-surface": "#dbe3f2",
+                        "on-secondary-fixed-variant": "#43474e",
+                        "on-primary-container": "#007168",
+                        "secondary": "#c3c6cf",
+                        "surface-container-highest": "#2d3541",
+                        "tertiary-fixed-dim": "#4cd6fb",
+                        "status-success": "#23C55E",
+                        "on-secondary": "#2d3137",
+                        "on-background": "#dbe3f2",
+                        "surface-container-lowest": "#070f19",
+                        "tertiary-fixed": "#b3ebff",
+                        "primary": "#ffffff",
+                        "on-secondary-container": "#b5b8c1",
+                        "outline-variant": "#3a4a47",
+                        "on-tertiary-fixed": "#001f27",
+                        "surface-bright": "#21262D",
+                        "status-error": "#EF4444",
+                        "primary-fixed": "#08fdea",
+                        "on-secondary-fixed": "#181c22",
+                        "error-container": "#93000a",
+                        "surface-tint": "#00decd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["JetBrains Mono"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0c141e;
+            color: #dbe3f2;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0c141e; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d3541; border-radius: 10px; }
+        .glass-card { background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(8px); border: 1px solid #21262D; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    </style>
+</head>
+<body class="custom-scrollbar">
+<!-- TopNavBar Implementation (Enterprise Focus) -->
+<nav class="flex justify-between items-center w-full px-margin-desktop h-16 bg-surface-container-low border-b border-surface-bright fixed top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md text-primary">Enterprise Portal</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#">Consumer</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Enterprise</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex gap-4 items-center">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">account_balance</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">help</span>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-bold text-label-bold rounded-lg hover:opacity-90 transition-all active:scale-[0.98]">
+                Create Quote
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-surface-bright overflow-hidden">
+<img alt="Company Profile" class="w-full h-full object-cover" data-alt="A professional corporate headshot of a middle-aged executive man wearing a sleek charcoal suit against a minimal dark office background. The lighting is crisp and high-contrast, reflecting a technological and enterprise-focused environment. The image uses a cool-toned palette of deep blues and greys, matching the digital ecosystem's professional DNA." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFrI2k_sslMy_o-bwLV3MCfhf90H9StPCa4GihR9Ghysn6vZCuVKSU9EVD-DIKdmnK65lgmg321eDFUYCIYWLhL67d4gC4vIToLXBL5EP6lINtZvVEVhDZQfSItb3AP57qHW83EwXUk0vmETKkw-RtcZt-4FXUXERZJJHBKsdF3ILUBgBGZo17KXDWdCzyHExDIngF-2Yk1I4q0j2gDi_-8bxehGl3ap4R5Muv7Hih8CnYMLCyXaRAqAtaTxryVYvq3vVXMYM7owo"/>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<header class="mb-8">
+<h1 class="text-headline-lg font-headline-lg text-primary mb-2">Corporate Procurement</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Manage high-volume hardware deployments and enterprise credit lines.</p>
+</header>
+<!-- Main Dashboard Bento Layout -->
+<div class="bento-grid">
+<!-- 1. Corporate Catalog (Grid of Enterprise Edition hardware) -->
+<section class="col-span-12 lg:col-span-8 space-y-4">
+<div class="flex justify-between items-end">
+<h2 class="text-label-bold font-label-bold text-on-primary-fixed uppercase tracking-widest">Enterprise Edition Catalog</h2>
+<span class="text-body-sm font-body-sm text-primary-fixed-dim bg-surface-container-high px-2 py-1 border border-outline-variant">Bulk-Only SKUs</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Product 1 -->
+<div class="bg-surface-container border border-surface-bright p-4 flex flex-col hover:bg-surface-container-high transition-colors group">
+<div class="aspect-video bg-surface-dim mb-4 relative overflow-hidden">
+<img alt="RMG-X1 Server Rack" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-density server rack clusters in a modern dark data center illuminated by cyan and teal LED status indicators. The perspective is architectural and precise, emphasizing professional electronic engineering. The visual style is minimal and high-performance, utilizing a strict grid and dark tonal layering to represent technological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhcjmvWsdzY721NFQt2eitDHhkzT6F_0BFMjq0v3kLDlsbbsCi_Y6HMXQN5kUgGeWIznQUWywceBOFpQ0SWwZUFXr5YzvNSIM4lo40DUR3XbT5mHOo4X3SDMDTxwqNJ8tphD5rGH4OviOafIDtTVAJRb0sWPF1EixBvR5nG9WSrH86p9JnJzUE0cRHA5YQaZnw4sL7kVYMxkH2z4SpLdznF2TZRZjj0RrZYDf-mD_f1oG2_MbWk3qTy_O1rthPRgi0YEJCgGFzcuk"/>
+<div class="absolute top-2 right-2 bg-on-primary-container text-primary-container px-2 py-0.5 text-[10px] font-bold">MIN 50 UNITS</div>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary">RMG-X1 Quantum Cluster</h3>
+<p class="text-body-sm text-on-surface-variant mt-1 mb-4">Rack-mount computational unit with liquid cooling. 512-core architecture.</p>
+<div class="mt-auto border-t border-surface-bright pt-4 flex justify-between items-center">
+<div>
+<span class="block text-label-bold text-on-surface-variant">BULK RATE</span>
+<span class="text-headline-md font-mono-data text-primary">$12,450.00 <small class="text-body-sm font-normal text-on-surface-variant">/ unit</small></span>
+</div>
+<button class="material-symbols-outlined text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary-container p-2 rounded transition-all">add_shopping_cart</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-surface-container border border-surface-bright p-4 flex flex-col hover:bg-surface-container-high transition-colors group">
+<div class="aspect-video bg-surface-dim mb-4 relative overflow-hidden">
+<img alt="RMG-Pro Workstation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a high-end workstation cluster featuring sleek metallic chassis and glowing internal hardware components. The lighting is cinematic with a focus on teal accents and deep shadows, highlighting the premium quality of the enterprise hardware. The atmosphere is quiet, professional, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS9NEnT4OtTIxslTXcRYFIzDPflPZi3v8k5QtqN8unqHO-ffoU5j82w3-55AT-MrsRLSZ_rKiW7x4QoI095iqROxRbwRC0vxZdSZUU8k3mXEaGZV4hBuV-8Eqz8vP8x6RfgVhq3OL90wbQJIsQUfN-NmdMHCyaomfWr8lnmE-3A3wgl-IW2pSe8M_ZQJy3cRunj5HTzrX-W7y9a93FxTnD7sdeidNP1TnXb2AdLlqch9s_Cge6gtyJOul-97_L_legU6Ga3JBGo9w"/>
+<div class="absolute top-2 right-2 bg-on-primary-container text-primary-container px-2 py-0.5 text-[10px] font-bold">MIN 20 UNITS</div>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary">RMG Pro-Link Node</h3>
+<p class="text-body-sm text-on-surface-variant mt-1 mb-4">Dedicated enterprise gateway workstation with hardware encryption.</p>
+<div class="mt-auto border-t border-surface-bright pt-4 flex justify-between items-center">
+<div>
+<span class="block text-label-bold text-on-surface-variant">BULK RATE</span>
+<span class="text-headline-md font-mono-data text-primary">$4,890.00 <small class="text-body-sm font-normal text-on-surface-variant">/ unit</small></span>
+</div>
+<button class="material-symbols-outlined text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary-container p-2 rounded transition-all">add_shopping_cart</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Payout & Credit / Account Manager Side Column -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Payout & Credit Section -->
+<div class="bg-surface-container border border-surface-bright p-6">
+<h3 class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-4 tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">payments</span> Financial Health
+                    </h3>
+<div class="space-y-6">
+<div>
+<span class="text-body-sm text-on-surface-variant">Enterprise Credit Line</span>
+<div class="flex justify-between items-end mt-1">
+<span class="text-headline-md font-mono-data text-primary">$250,000.00</span>
+<span class="text-body-sm font-label-bold text-status-success">82% Available</span>
+</div>
+<div class="w-full bg-surface-dim h-1.5 mt-2 rounded-full overflow-hidden">
+<div class="bg-primary-fixed-dim h-full" style="width: 82%"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-dim border-l-4 border-primary-fixed-dim">
+<span class="block text-label-bold text-primary mb-1">NET-30 Active</span>
+<p class="text-body-sm text-on-surface-variant">Next invoice due: <span class="font-mono-data text-primary">Oct 24, 2023</span></p>
+</div>
+<div class="flex flex-col gap-2">
+<button class="w-full bg-surface-bright text-primary border border-outline-variant py-2 text-label-bold hover:bg-surface-container-highest transition-colors">Download Statements</button>
+<button class="w-full border border-primary-fixed-dim text-primary-fixed-dim py-2 text-label-bold hover:bg-primary-container hover:text-on-primary-container transition-all">Increase Credit Line</button>
+</div>
+</div>
+</div>
+<!-- Account Manager Contact Card -->
+<div class="bg-surface-container border border-surface-bright p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-6xl">support_agent</span>
+</div>
+<h3 class="text-label-bold font-label-bold text-on-surface-variant uppercase mb-4 tracking-wider">Dedicated Account Rep</h3>
+<div class="flex items-center gap-4">
+<img alt="Manager" class="w-16 h-16 rounded-full object-cover border-2 border-primary-fixed-dim" data-alt="Close-up portrait of a professional female account manager in a clean, high-tech workspace. She is wearing a headset and smiling subtly, conveying confidence and accessibility. The lighting is soft and neutral, with a background consisting of blurred office monitors showing data-dense graphs in a teal and dark blue palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMTXBF9H854BPOKVYh49CoeJwcwLTm-V-Hd7n9X-6lpFj8cx_NyaNFA2Wdnlk2f0ibRYFPpzMUroBfsUlzk4UXV3x81fHX7cJ_zrms_HO3Z0Lmy1Uh3eFba9Q8a-z2lChjnhdPsXhVPIJwqB9KM2bzJn9b2JmKSGB8GMD2X-DGWDx59vbfAavJ7dz7iZeohwXmFOqQRjlaD3BTBqAJwtGMrysqs2bs4GaQHQ-xKJQHuOe-LgCcNng9uvHnUPdUfTOYUqiS0rwY3lE"/>
+<div>
+<p class="text-body-lg font-bold text-primary">Marcus Vancore</p>
+<p class="text-body-sm text-on-surface-variant">Sr. Enterprise Strategist</p>
+<div class="flex gap-3 mt-2">
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer text-lg hover:scale-110 transition-transform">mail</span>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer text-lg hover:scale-110 transition-transform">call</span>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer text-lg hover:scale-110 transition-transform">video_call</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- 3. Bulk Quote Tool -->
+<section class="col-span-12">
+<div class="bg-surface-container border border-surface-bright">
+<div class="p-6 border-b border-surface-bright flex justify-between items-center">
+<h2 class="text-headline-md font-headline-md text-primary">Bulk Quote Request Tool</h2>
+<span class="text-body-sm text-on-surface-variant font-mono-data">Ref: RMG-QUO-2023-0092</span>
+</div>
+<form class="p-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1: Volume -->
+<div class="space-y-4">
+<label class="block text-label-bold text-on-surface-variant uppercase">Order Volume</label>
+<div class="relative">
+<input class="w-full bg-surface-dim border border-surface-bright p-3 text-primary focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim outline-none transition-all placeholder:text-surface-variant font-mono-data" placeholder="Min. 50 units" type="number"/>
+<span class="absolute right-3 top-3 text-on-surface-variant text-body-sm">UNITS</span>
+</div>
+<div class="p-3 bg-surface-container-high rounded text-body-sm text-on-primary-fixed-variant">
+<strong>Estimated savings:</strong> <span class="text-primary-fixed-dim">12.5%</span> compared to retail.
+                            </div>
+</div>
+<!-- Step 2: Documentation -->
+<div class="space-y-4">
+<label class="block text-label-bold text-on-surface-variant uppercase">Tax-Exempt Documentation</label>
+<div class="border-2 border-dashed border-surface-bright p-6 flex flex-col items-center justify-center bg-surface-dim hover:border-primary-fixed-dim transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-surface-variant group-hover:text-primary-fixed-dim mb-2">upload_file</span>
+<span class="text-body-sm text-on-surface-variant">Drop PDF or <span class="text-primary-fixed-dim underline">browse</span></span>
+<span class="text-[10px] text-surface-variant mt-1 uppercase">Required for tax-free bulk orders</span>
+</div>
+</div>
+<!-- Step 3: Logistics & Notes -->
+<div class="space-y-4">
+<label class="block text-label-bold text-on-surface-variant uppercase">Deployment Timeline</label>
+<select class="w-full bg-surface-dim border border-surface-bright p-3 text-primary focus:border-primary-fixed-dim outline-none">
+<option>ASAP (Within 14 days)</option>
+<option>Next Quarter Deployment</option>
+<option>Budgetary Placeholder</option>
+</select>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed p-3 text-label-bold uppercase hover:opacity-90 transition-all shadow-lg" type="submit">
+                                Generate Custom Quote
+                            </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Active Quotes Data Table -->
+<section class="col-span-12 bg-surface-container border border-surface-bright">
+<div class="p-4 border-b border-surface-bright flex items-center justify-between">
+<h3 class="text-label-bold text-on-surface-variant">ACTIVE QUOTES &amp; PENDING ORDERS</h3>
+<div class="flex gap-2">
+<input class="bg-surface-dim border border-surface-bright text-xs px-2 py-1 outline-none focus:border-primary-fixed-dim" placeholder="Search orders..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-bright text-label-bold text-on-surface-variant text-[10px] uppercase">
+<th class="px-6 py-3 font-medium">Quote ID</th>
+<th class="px-6 py-3 font-medium">Recipient Dept.</th>
+<th class="px-6 py-3 font-medium">Items</th>
+<th class="px-6 py-3 font-medium">Value</th>
+<th class="px-6 py-3 font-medium">Status</th>
+<th class="px-6 py-3 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-bright">
+<tr class="hover:bg-surface-container-high transition-colors text-body-sm">
+<td class="px-6 py-3 font-mono-data text-primary">#RMG-55092</td>
+<td class="px-6 py-3">DevOps Infrastructure</td>
+<td class="px-6 py-3">50x RMG-X1 Cluster</td>
+<td class="px-6 py-3 font-mono-data">$622,500.00</td>
+<td class="px-6 py-3">
+<span class="px-2 py-0.5 rounded-full bg-status-warning/10 text-status-warning text-[10px] font-bold border border-status-warning/20">PENDING APPROVAL</span>
+</td>
+<td class="px-6 py-3 text-right">
+<button class="text-primary-fixed-dim text-xs hover:underline">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors text-body-sm">
+<td class="px-6 py-3 font-mono-data text-primary">#RMG-54812</td>
+<td class="px-6 py-3">Global Security Operations</td>
+<td class="px-6 py-3">120x Pro-Link Nodes</td>
+<td class="px-6 py-3 font-mono-data">$586,800.00</td>
+<td class="px-6 py-3">
+<span class="px-2 py-0.5 rounded-full bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">PROVISIONED</span>
+</td>
+<td class="px-6 py-3 text-right">
+<button class="text-primary-fixed-dim text-xs hover:underline">Track</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Success Notification Micro-interaction -->
+<div class="fixed bottom-6 right-6 bg-surface-container-highest border border-primary-fixed-dim p-4 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+<div>
+<p class="text-label-bold text-primary">Quote Generated</p>
+<p class="text-body-sm text-on-surface-variant">Check your email for full procurement details.</p>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for the quote button
+        const form = document.querySelector('form');
+        const toast = document.getElementById('toast');
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 5000);
+        });
+    </script>
+</body></html>

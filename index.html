@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMG Electronics | Buy Mobiles, Laptops & Home Appliances Online</title>
+  <meta name="description" content="Shop for the latest Mobiles, Laptops, Audio gear, Televisions, Wearables, and Home Appliances at RMG Electronics. Inspired by Croma.">
+  
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Style Sheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Header Section (Light Gray Theme) -->
+  <header class="main-header">
+    <div class="header-container">
+      
+      <!-- Brand & Menu -->
+      <div class="brand-section">
+        <button id="menu-btn" class="menu-trigger-btn" aria-label="Open Menu">
+          <i class="fa-solid fa-bars menu-trigger-icon"></i>
+          <span class="menu-trigger-text">Menu</span>
+        </button>
+        <a href="#" id="logo-link" class="logo">rmg mobile</a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-section">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-inner-icon"></i>
+          <input type="text" id="search-input" placeholder="Search for Mobiles, Laptops, Audio..." autocomplete="off">
+          <button id="search-btn" class="search-btn">Search</button>
+        </div>
+        <!-- Search Suggestions Dropdown -->
+        <div id="search-suggestions" class="search-suggestions hidden"></div>
+      </div>
+
+      <!-- Header Icon Actions (Vertical Text Links) -->
+      <div class="nav-actions">
+        <!-- Store Location Pin (Triggers pincode modal) -->
+        <div class="header-nav-item" id="location-trigger">
+          <i class="fa-solid fa-location-dot"></i>
+          <span class="nav-label" id="location-text">STORE</span>
+        </div>
+
+        <!-- User Profile (Triggers login or user dropdown menu) -->
+        <div class="header-nav-item" id="profile-nav-trigger">
+          <i class="fa-regular fa-user"></i>
+          <span class="nav-label" id="user-status-text">PROFILE</span>
+          <!-- User Dropdown Menu -->
+          <div id="user-dropdown" class="user-dropdown hidden">
+            <div class="dropdown-header">
+              <p class="dropdown-title" id="dropdown-user-name">Welcome Guest</p>
+              <p class="dropdown-subtitle" id="dropdown-user-role">Shop latest tech offers</p>
+            </div>
+            <hr class="dropdown-divider">
+            <a href="#" class="dropdown-item" id="dropdown-home-btn"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#" class="dropdown-item hidden" id="dropdown-admin-btn"><i class="fa-solid fa-chart-line"></i> Admin Dashboard</a>
+            <a href="#" class="dropdown-item" id="dropdown-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+          </div>
+        </div>
+
+        <!-- Wishlist -->
+        <div class="header-nav-item" id="wishlist-trigger">
+          <i class="fa-regular fa-heart"></i>
+          <span class="nav-label">WISHLIST</span>
+        </div>
+
+        <!-- Shopping Cart (Triggers cart drawer) -->
+        <div class="header-nav-item" id="cart-trigger">
+          <div class="cart-icon-wrapper">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge hidden" id="cart-count">0</span>
+          </div>
+          <span class="nav-label">CART</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Sub-Navigation Category Bar -->
+  <nav class="sub-nav">
+    <div class="sub-nav-container">
+      <a href="#" class="sub-nav-link active" data-cat="mobiles">Mobiles</a>
+      <a href="#" class="sub-nav-link" data-cat="laptops">Laptops</a>
+      <a href="#" class="sub-nav-link" data-cat="tv">TVs</a>
+      <a href="#" class="sub-nav-link" data-cat="audio">Audio</a>
+      <a href="#" class="sub-nav-link" data-cat="appliances">Appliances</a>
+      <a href="#" class="sub-nav-link" data-cat="all">Offers</a>
+    </div>
+  </nav>
+
+  <!-- Location Update Modal -->
+  <div id="location-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Enter Delivery Details</h3>
+        <button class="modal-close" id="close-location-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">Enter your Pincode to check product availability and delivery timelines.</p>
+        <div class="input-group">
+          <input type="text" id="pincode-input" placeholder="Enter 6-digit Pincode" maxlength="6">
+          <button id="apply-pincode-btn" class="primary-btn">Apply</button>
+        </div>
+        <p class="pincode-error hidden" id="pincode-error">Please enter a valid 6-digit pincode.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Croma-Style Multi-Pane Overlay Navigation Menu -->
+  <div id="side-nav" class="side-nav-overlay hidden">
+    <div class="side-nav-content-wrapper">
+      
+      <!-- Panel 1: Main Category List -->
+      <div class="side-nav-main-panel">
+        <ul class="side-nav-main-list" id="side-nav-main-list">
+          <li class="side-main-item simple-link"><i class="fa-solid fa-gem"></i> Exclusive At RMG</li>
+          <li class="side-main-item has-sub-chevron" data-submenu="top-brands"><i class="fa-solid fa-award"></i> Top Brands <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item simple-link"><i class="fa-solid fa-map-location-dot"></i> RMG Store Locator</li>
+          <li class="side-main-item simple-link"><i class="fa-solid fa-gift"></i> Gift Card</li>
+          
+          <li class="side-nav-divider-title">Shop by Category</li>
+          
+          <li class="side-main-item has-sub-chevron" data-submenu="tv"><i class="fa-solid fa-tv"></i> Televisions & Accessories <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron active" data-submenu="appliances"><i class="fa-solid fa-plug"></i> Home Appliances <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="mobiles"><i class="fa-solid fa-mobile-screen-button"></i> Phones & Wearables <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="laptops"><i class="fa-solid fa-laptop"></i> Computers & Tablets <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="kitchen"><i class="fa-solid fa-kitchen-set"></i> Kitchen Appliances <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="audio"><i class="fa-solid fa-headphones"></i> Audio & Video <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="fitness"><i class="fa-solid fa-heart-pulse"></i> Health & Fitness <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="grooming"><i class="fa-solid fa-scissors"></i> Grooming & Personal Care <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="cameras"><i class="fa-solid fa-camera"></i> Cameras & Accessories <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="smart-devices"><i class="fa-solid fa-house-signal"></i> Smart Devices <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+          <li class="side-main-item has-sub-chevron" data-submenu="gaming"><i class="fa-solid fa-gamepad"></i> Gaming <i class="fa-solid fa-chevron-right chevron-list"></i></li>
+        </ul>
+      </div>
+
+      <!-- Panel 2: Dynamic Subcategory List -->
+      <div class="side-nav-sub-panel" id="side-nav-sub-panel">
+        <!-- Injected dynamically in app.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Dynamic View Container -->
+  <main class="main-content">
+    
+    <!-- 1. HOMEPAGE VIEW -->
+    <section id="home-view" class="app-view">
+      
+      <!-- Main Homepage Contents (Visible only when filtering is 'all') -->
+      <div id="main-homepage-content">
+        
+        <!-- Styled Auto-sliding Hero Carousel -->
+        <div class="hero-carousel-container">
+          <div class="carousel-track" id="carousel-track">
+            
+            <!-- Slide 1: ASUS Vivobook 14 -->
+            <div class="carousel-slide active hero-asus-slide">
+              <div class="hero-slide-content">
+                <span class="hero-brand-name">ASUS</span>
+                <h1 class="hero-slide-title">Vivobook 14</h1>
+                <p class="hero-slide-specs">16GB | 512GB SSD</p>
+                <div class="hero-slide-price-block">
+                  <span class="mrp-old">₹81,990</span>
+                  <span class="price-deal">₹62,045*</span>
+                  <p class="price-disclaimer">*Inclusive of all Offers</p>
+                </div>
+                <button class="primary-btn hero-slide-btn" onclick="openProductDetails(3)">Shop now</button>
+              </div>
+              <div class="hero-slide-image-wrapper">
+                <span class="ryzen-badge">RYZEN AI 300 SERIES</span>
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80" alt="ASUS Vivobook 14">
+              </div>
+            </div>
+            
+            <!-- Slide 2: Samsung Galaxy S24 Ultra -->
+            <div class="carousel-slide hero-s24-slide">
+              <div class="hero-slide-content">
+                <span class="hero-tag">SAMSUNG DAYS</span>
+                <h1 class="hero-slide-title">Galaxy S24 Ultra</h1>
+                <p class="hero-slide-specs">The ultimate AI smartphone. Pre-book now and get Galaxy Buds2 Pro at just ₹999. Limited period offer.</p>
+                <button class="primary-btn hero-slide-btn" onclick="openProductDetails(6)">PRE-BOOK NOW</button>
+              </div>
+              <div class="hero-slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop&q=80" alt="Samsung Galaxy S24 Ultra">
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Carousel Nav Buttons -->
+          <button class="carousel-btn carousel-btn-left" id="prev-slide-btn" aria-label="Previous Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn carousel-btn-right" id="next-slide-btn" aria-label="Next Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          
+          <!-- Carousel Dots -->
+          <div class="carousel-nav" id="carousel-dots">
+            <button class="carousel-dot active"></button>
+            <button class="carousel-dot"></button>
+          </div>
+        </div>
+
+        <!-- Quick Category Circles Rail -->
+        <div class="category-circles-container">
+          <div class="category-circles-scroll">
+            <div class="category-circle-item" data-cat="mobiles">
+              <div class="circle-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <span>Mobiles</span>
+            </div>
+            <div class="category-circle-item" data-cat="laptops">
+              <div class="circle-icon"><i class="fa-solid fa-laptop"></i></div>
+              <span>Laptops</span>
+            </div>
+            <div class="category-circle-item" data-cat="tv">
+              <div class="circle-icon"><i class="fa-solid fa-tv"></i></div>
+              <span>Televisions</span>
+            </div>
+            <div class="category-circle-item" data-cat="audio">
+              <div class="circle-icon"><i class="fa-solid fa-headphones"></i></div>
+              <span>Audio</span>
+            </div>
+            <div class="category-circle-item" data-cat="watches">
+              <div class="circle-icon"><i class="fa-solid fa-stopwatch"></i></div>
+              <span>Wearables</span>
+            </div>
+            <div class="category-circle-item" data-cat="appliances">
+              <div class="circle-icon"><i class="fa-solid fa-plug"></i></div>
+              <span>Appliances</span>
+            </div>
+            <div class="category-circle-item" data-cat="cameras">
+              <div class="circle-icon"><i class="fa-solid fa-camera"></i></div>
+              <span>Cameras</span>
+            </div>
+            <div class="category-circle-item" data-cat="accessories">
+              <div class="circle-icon"><i class="fa-solid fa-keyboard"></i></div>
+              <span>Accessories</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: FLASH SALE ON LAPTOPS -->
+        <section class="flash-sale-section">
+          <div class="flash-sale-panel">
+            <div class="flash-sale-promo">
+              <div class="flash-sale-badge">
+                <i class="fa-solid fa-bolt"></i> FLASH SALE
+              </div>
+              <h2>Limited Time Deals on Laptops</h2>
+              <p>Grab the lowest prices on Intel and AMD notebooks.</p>
+              <button class="primary-btn btn-go-cat" data-cat="laptops">Explore more</button>
+            </div>
+            <div class="flash-sale-grid">
+              
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=200&auto=format&fit=crop&q=80" alt="Dell G15">
+                <div class="flash-card-info">
+                  <h4>Dell G15 Intel Core i5</h4>
+                  <p class="flash-price">₹67,990 <span class="flash-mrp">₹73,990</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+              
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=200&auto=format&fit=crop&q=80" alt="Asus V15">
+                <div class="flash-card-info">
+                  <h4>Asus V15 Intel Core i5</h4>
+                  <p class="flash-price">₹67,990 <span class="flash-mrp">₹79,971</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+              
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=200&auto=format&fit=crop&q=80" alt="HP Victus 15">
+                <div class="flash-card-info">
+                  <h4>HP Victus 15 Intel Core i5</h4>
+                  <p class="flash-price">₹64,990 <span class="flash-mrp">₹77,349</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=200&auto=format&fit=crop&q=80" alt="Lenovo IdeaPad">
+                <div class="flash-card-info">
+                  <h4>Lenovo IdeaPad Slim 3</h4>
+                  <p class="flash-price">₹38,990 <span class="flash-mrp">₹48,990</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?w=200&auto=format&fit=crop&q=80" alt="HP Victus 16">
+                <div class="flash-card-info">
+                  <h4>HP Victus 16 Intel Core i5</h4>
+                  <p class="flash-price">₹79,990 <span class="flash-mrp">₹94,911</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+
+              <div class="flash-deal-card" onclick="openProductDetails(3)">
+                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=200&auto=format&fit=crop&q=80" alt="Asus TUF A15">
+                <div class="flash-card-info">
+                  <h4>Asus TUF A15 AMD Ryzen 7</h4>
+                  <p class="flash-price">₹73,990 <span class="flash-mrp">₹85,111</span></p>
+                  <small>*Inclusive of all Offers</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: WATCH OUT FOR THIS -->
+        <section class="promo-cards-section">
+          <h2 class="section-title">Watch Out for This</h2>
+          <div class="promo-cards-rail">
+            
+            <div class="promo-banner-card" style="background: linear-gradient(135deg, #1e2022, #2d3033);">
+              <div class="promo-card-text">
+                <span class="brand-tag">Oura Ring</span>
+                <h3>Up to 30% off on Oura Ring 4</h3>
+                <button class="primary-btn btn-small" onclick="openProductDetails(5)">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=250&auto=format&fit=crop&q=80" alt="Oura Ring 4">
+            </div>
+
+            <div class="promo-banner-card" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #0f172a;">
+              <div class="promo-card-text">
+                <span class="brand-tag dark">OPPO</span>
+                <h3>Reno16 Series 5G</h3>
+                <p class="promo-sub">Starting at ₹46,999</p>
+                <button class="primary-btn btn-small dark" onclick="openProductDetails(1)">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=250&auto=format&fit=crop&q=80" alt="OPPO Reno16">
+            </div>
+
+            <div class="promo-banner-card" style="background: linear-gradient(135deg, #022c22, #064e3b);">
+              <div class="promo-card-text">
+                <span class="brand-tag">SAMSUNG</span>
+                <h3>Galaxy A27 5G</h3>
+                <p class="promo-sub">Starting at ₹31,999</p>
+                <button class="primary-btn btn-small" onclick="openProductDetails(6)">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1565630916779-e303be97b6f5?w=250&auto=format&fit=crop&q=80" alt="Galaxy A27 5G">
+            </div>
+
+            <div class="promo-banner-card" style="background: linear-gradient(135deg, #881337, #4c0519);">
+              <div class="promo-card-text">
+                <span class="brand-tag">EXCLUSIVES</span>
+                <h3>Up to 60% off on Essentials</h3>
+                <button class="primary-btn btn-small" onclick="navigateTo('home-view')">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1522273400909-fd1a8f77637e?w=250&auto=format&fit=crop&q=80" alt="Croma Exclusives">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 4: WHAT'S HOT -->
+        <section class="whats-hot-section">
+          <h2 class="section-title">What's Hot</h2>
+          <div class="whats-hot-grid">
+            
+            <div class="hot-card" onclick="renderCatalogGrid('appliances')">
+              <div class="hot-card-text">
+                <h3>Clearance Sale on Washing Machines</h3>
+                <p>Starting at ₹9,990</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=200&auto=format&fit=crop&q=80" alt="Washing Machine">
+            </div>
+
+            <div class="hot-card" onclick="renderCatalogGrid('appliances')">
+              <div class="hot-card-text">
+                <h3>Best Deals on Refrigerators</h3>
+                <p>Under ₹30,000*</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1571175432250-41fd183598a3?w=200&auto=format&fit=crop&q=80" alt="Refrigerator">
+            </div>
+
+            <div class="hot-card" onclick="renderCatalogGrid('audio')">
+              <div class="hot-card-text">
+                <h3>Top Selling Soundbars</h3>
+                <p>Starting at ₹3,299</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=200&auto=format&fit=crop&q=80" alt="Soundbar">
+            </div>
+
+            <div class="hot-card" onclick="renderCatalogGrid('appliances')">
+              <div class="hot-card-text">
+                <h3>Best Deals on Microwaves</h3>
+                <p>Starting at ₹5,490</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=200&auto=format&fit=crop&q=80" alt="Microwave">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 5: BEATS OF THE MOMENT -->
+        <section class="beats-moment-section">
+          <h2 class="section-title">Beats of the Moment</h2>
+          <div class="beats-grid">
+            
+            <div class="beats-card" onclick="openProductDetails(4)">
+              <div class="beats-text">
+                <span class="jbl-tag">JBL</span>
+                <h3>JBL PARTYBOX 320</h3>
+                <p class="price-info">AT JUST ₹64,999</p>
+                <button class="primary-btn btn-small">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&auto=format&fit=crop&q=80" alt="JBL PartyBox">
+            </div>
+
+            <div class="beats-card" onclick="openProductDetails(4)">
+              <div class="beats-text">
+                <span class="jbl-tag">JBL</span>
+                <h3>JBL BAR 1300</h3>
+                <p class="price-info">AT JUST ₹124,999</p>
+                <button class="primary-btn btn-small">Shop now</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80" alt="JBL Soundbar">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Deals of the Day -->
+        <section class="rail-section">
+          <div class="rail-header">
+            <h2>Deals of the Day</h2>
+            <span class="timer-badge"><i class="fa-regular fa-clock"></i> Ends in <span id="deal-timer">23:59:59</span></span>
+          </div>
+          <div class="product-rail-outer">
+            <button class="rail-nav-btn rail-prev" data-target="deals-rail"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="product-rail" id="deals-rail">
+              <!-- Dynamic deal product cards here -->
+            </div>
+            <button class="rail-nav-btn rail-next" data-target="deals-rail"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </section>
+
+        <!-- SECTION 6: CURATED DEALS RAILS -->
+        <section class="curated-deals-section">
+          <div class="curated-deals-grid">
+            
+            <div class="curated-deal-card" onclick="renderCatalogGrid('appliances')">
+              <div class="curated-card-text">
+                <span class="tag">elica | FABER</span>
+                <h3>Bestselling Chimneys</h3>
+                <p class="starting-price">Starting at ₹4,199</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=200&auto=format&fit=crop&q=80" alt="Chimney">
+            </div>
+
+            <div class="curated-deal-card" onclick="renderCatalogGrid('laptops')">
+              <div class="curated-card-text">
+                <span class="tag">SAMSUNG</span>
+                <h3>Full HD Monitors</h3>
+                <p class="starting-price">Starting at ₹8,590</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&auto=format&fit=crop&q=80" alt="Monitor">
+            </div>
+
+            <div class="curated-deal-card" onclick="renderCatalogGrid('audio')">
+              <div class="curated-card-text">
+                <span class="tag">ONEPLUS</span>
+                <h3>Neckbands & Truly Wireless Earbuds</h3>
+                <p class="starting-price">Starting at ₹1,749</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=200&auto=format&fit=crop&q=80" alt="OnePlus Earbuds">
+            </div>
+
+            <div class="curated-deal-card" onclick="renderCatalogGrid('appliances')">
+              <div class="curated-card-text">
+                <span class="tag">DEALS</span>
+                <h3>Electric Kettles</h3>
+                <p class="starting-price">Starting at ₹699</p>
+              </div>
+              <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=200&auto=format&fit=crop&q=80" alt="Electric Kettle">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 7: CURATED EXPERIENCES -->
+        <section class="curated-experiences-section">
+          <h2 class="section-title">RMG Curated Experiences</h2>
+          <div class="experiences-grid">
+            
+            <div class="exp-card">
+              <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=350&auto=format&fit=crop&q=80" alt="Living room">
+              <div class="exp-content">
+                <h3>Create a home that feels like you.</h3>
+                <button class="primary-btn btn-small" onclick="renderCatalogGrid('tv')">Explore Now</button>
+              </div>
+            </div>
+
+            <div class="exp-card">
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=350&auto=format&fit=crop&q=80" alt="Baking cake">
+              <div class="exp-content">
+                <h3>Bake Your Passion. Create Sweet Moments</h3>
+                <button class="primary-btn btn-small" onclick="renderCatalogGrid('appliances')">Explore Now</button>
+              </div>
+            </div>
+
+            <div class="exp-card">
+              <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=350&auto=format&fit=crop&q=80" alt="Recording desk">
+              <div class="exp-content">
+                <h3>Express your world. Inspire what comes next.</h3>
+                <button class="primary-btn btn-small" onclick="renderCatalogGrid('audio')">Explore Now</button>
+              </div>
+            </div>
+
+            <div class="exp-card">
+              <img src="https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?w=350&auto=format&fit=crop&q=80" alt="Camera Outdoors">
+              <div class="exp-content">
+                <h3>Capture Stories. Create forever.</h3>
+                <button class="primary-btn btn-small" onclick="renderCatalogGrid('cameras')">Explore Now</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 8: AC CARE SERVICE BANNER -->
+        <section class="bottom-service-section">
+          <div class="zipcare-banner">
+            <div class="zipcare-content">
+              <span class="zipcare-tag"><i class="fa-solid fa-screwdriver-wrench"></i> ZIPCARE SERVICE</span>
+              <h2>Professional AC Installation & Care</h2>
+              <p>Ensure maximum cooling efficiency with certified RMG technicians. Book servicing from ₹499.</p>
+              <button class="primary-btn" onclick="showToast('AC Servicing Booking request recorded. Our representative will contact you!', 'success')">Book Servicing Now</button>
+            </div>
+            <div class="zipcare-img">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&auto=format&fit=crop&q=80" alt="AC Care Servicing">
+            </div>
+          </div>
+        </section>
+
+        <!-- Croma Exclusives Deals On Tech -->
+        <section class="rail-section">
+          <div class="rail-header">
+            <h2>RMG Exclusives Deals On Tech</h2>
+          </div>
+          <div class="product-rail-outer">
+            <button class="rail-nav-btn rail-prev" data-target="exclusives-rail"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="product-rail" id="exclusives-rail">
+              <!-- Rendered via JS using Croma/RMG brand items -->
+            </div>
+            <button class="rail-nav-btn rail-next" data-target="exclusives-rail"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </section>
+
+        <!-- Handpicked For You -->
+        <section class="promo-cards-section">
+          <h2 class="section-title">Handpicked For You</h2>
+          <div class="handpicked-grid">
+            <div class="handpicked-card" onclick="renderCatalogGrid('tv')">
+              <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=280&auto=format&fit=crop&q=80" alt="TVs">
+              <div class="handpicked-info">
+                <span>TVs</span>
+                <h4>Televisions under ₹25,000</h4>
+              </div>
+            </div>
+            <div class="handpicked-card" onclick="renderCatalogGrid('appliances')">
+              <img src="https://images.unsplash.com/photo-1571175432250-41fd183598a3?w=280&auto=format&fit=crop&q=80" alt="Refrigerators">
+              <div class="handpicked-info">
+                <span>Refrigerators</span>
+                <h4>Refrigerators under ₹20,000</h4>
+              </div>
+            </div>
+            <div class="handpicked-card" onclick="renderCatalogGrid('appliances')">
+              <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=280&auto=format&fit=crop&q=80" alt="Washing Machines">
+              <div class="handpicked-info">
+                <span>Washing Machines</span>
+                <h4>Washers under ₹15,000</h4>
+              </div>
+            </div>
+            <div class="handpicked-card" onclick="renderCatalogGrid('accessories')">
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=280&auto=format&fit=crop&q=80" alt="Accessories">
+              <div class="handpicked-info">
+                <span>Accessories</span>
+                <h4>Accessories under ₹999</h4>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Zipcare Banners Section -->
+        <section class="zipcare-services-section">
+          <div class="zipcare-secondary-banner">
+            <div class="zipcare-sec-content">
+              <span class="zipcare-tag"><i class="fa-solid fa-shield-halved"></i> ZIPCARE PROTECT</span>
+              <h3>Zipcare Device Protection</h3>
+              <p>Extend your device warranty and get zero-cost repairs. Shield your appliances now!</p>
+              <button class="primary-btn btn-small" onclick="showToast('Zipcare warranty details emailed to you!', 'info')">Know More</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=350&auto=format&fit=crop&q=80" alt="Zipcare Warranty">
+          </div>
+          
+          <div class="ewaste-banner">
+            <div class="ewaste-content">
+              <span class="green-leaf"><i class="fa-solid fa-leaf"></i> GO GREEN WITH RMG</span>
+              <h2>E-Waste Responsibility With Us</h2>
+              <p>Recycle your old electronics responsibly. Drop them at any RMG store and get reward vouchers.</p>
+              <button class="primary-btn btn-small" onclick="showToast('Thank you for choosing green! Check your nearest RMG store.', 'success')">Recycle Now</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=350&auto=format&fit=crop&q=80" alt="E-waste recycling">
+          </div>
+        </section>
+
+        <!-- OnePlus Pad 4 Teaser Blog Banner -->
+        <section class="teaser-blog-section">
+          <div class="teaser-card">
+            <div class="teaser-text-side">
+              <span class="teaser-brand">UNBOXED <small style="font-size:0.6rem; color:#888;">by RMG</small></span>
+              <h2>The OnePlus Pad 4 is the go-to tablet for your weekend binge</h2>
+              <p>Big screen, booming speakers and marathon-ready battery life</p>
+              <button class="primary-btn btn-small" onclick="showToast('Redirecting to tablet reviews...', 'info')">Read More</button>
+            </div>
+            <div class="teaser-img-side">
+              <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&auto=format&fit=crop&q=80" alt="OnePlus Pad 4">
+            </div>
+          </div>
+        </section>
+
+        <!-- NeuCoins App Promo -->
+        <section class="app-promo-section">
+          <div class="app-promo-banner">
+            <div class="promo-text">
+              <h3>Earn NeuCoins on Your Purchases</h3>
+              <p>Download the Tata Neu app to register your rewards card and enjoy 5% back on every transaction.</p>
+            </div>
+            <div class="promo-store-buttons">
+              <a href="#" class="store-badge" onclick="event.preventDefault(); showToast('Downloading iOS App...', 'info')"><i class="fa-brands fa-apple"></i> App Store</a>
+              <a href="#" class="store-badge" onclick="event.preventDefault(); showToast('Downloading Android App...', 'info')"><i class="fa-brands fa-google-play"></i> Google Play</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tata Card Dual Banners -->
+        <section class="tata-cards-section">
+          <div class="tata-card-banner border-glow-pink">
+            <div class="tata-text">
+              <h3>Tata Neu Card Infinity</h3>
+              <p>Get up to 10% NeuCoins back. First year fee waived.</p>
+              <button class="primary-btn btn-small" onclick="showToast('Credit card application form opened.', 'info')">Apply Now</button>
+            </div>
+            <i class="fa-solid fa-credit-card credit-icon text-pink"></i>
+          </div>
+          <div class="tata-card-banner border-glow-blue">
+            <div class="tata-text">
+              <h3>Tata Neu Card Plus</h3>
+              <p>Get up to 7% NeuCoins back. Save more daily.</p>
+              <button class="primary-btn btn-small" onclick="showToast('Credit card application form opened.', 'info')">Apply Now</button>
+            </div>
+            <i class="fa-solid fa-credit-card credit-icon text-blue"></i>
+          </div>
+        </section>
+
+        <!-- Why Croma -->
+        <section class="why-rmg-section">
+          <h2 class="section-title text-center">Why RMG?</h2>
+          <div class="why-rmg-grid">
+            <div class="why-card">
+              <i class="fa-solid fa-shield-halved why-icon"></i>
+              <h4>RMG Promise</h4>
+              <p>100% genuine electronic products sourced directly from authorized brands.</p>
+            </div>
+            <div class="why-card">
+              <i class="fa-solid fa-store why-icon"></i>
+              <h4>Authorized Outlets</h4>
+              <p>Experience touch-and-feel technology at 150+ RMG smart retail stores across India.</p>
+            </div>
+            <div class="why-card">
+              <i class="fa-solid fa-tags why-icon"></i>
+              <h4>Unbeatable Offers</h4>
+              <p>Lowest prices guaranteed with instant cashback and interest-free EMI plans.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Brands Rail Slider -->
+        <section class="brands-rail-section">
+          <div class="brands-rail-wrapper">
+            <div class="brands-rail-track">
+              <div class="brand-logo-img"><i class="fa-brands fa-apple"></i> Apple</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-headphones"></i> Bose</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-laptop"></i> Dell</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-tv"></i> Sony</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-plug"></i> Haier</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-mobile-screen"></i> Samsung</div>
+              <div class="brand-logo-img"><i class="fa-solid fa-circle-nodes"></i> RMG</div>
+              <div class="brand-logo-img"><i class="fa-brands fa-windows"></i> Microsoft</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Category Hub Landing Page Container (Loaded dynamically in app.js when category !== 'all') -->
+      <div id="category-hub-content" class="hidden"></div>
+
+      <!-- Unified Category Catalog Grid (Sits at the bottom of category landing page / homepage) -->
+      <div id="catalog-wrapper">
+        <section class="catalog-section" id="catalog-anchor">
+          <div class="catalog-header">
+            <h2 id="catalog-title">Trending in Tech</h2>
+            
+            <!-- Filters bar exactly like Croma catalog grid in Screenshot 3 -->
+            <div class="catalog-filter-bar">
+              <div class="filter-dropdowns">
+                <select id="filter-brand">
+                  <option value="all">Brand: All</option>
+                  <option value="apple">Apple</option>
+                  <option value="samsung">Samsung</option>
+                  <option value="oneplus">OnePlus</option>
+                  <option value="sony">Sony</option>
+                  <option value="dell">Dell</option>
+                  <option value="hp">HP</option>
+                  <option value="asus">Asus</option>
+                  <option value="lenovo">Lenovo</option>
+                </select>
+                
+                <select id="filter-price">
+                  <option value="all">Price: All</option>
+                  <option value="under-15k">Below ₹15,000</option>
+                  <option value="15k-40k">₹15,000 to ₹40,000</option>
+                  <option value="40k-80k">₹40,000 to ₹80,000</option>
+                  <option value="above-80k">Above ₹80,000</option>
+                </select>
+                
+                <select id="filter-sort">
+                  <option value="relevancy">Sort By: Relevancy</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Top Rated</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Categories Tabs (Still kept for quick clicks) -->
+            <div class="catalog-tabs">
+              <button class="tab-btn active" data-filter="all">All</button>
+              <button class="tab-btn" data-filter="mobiles">Mobiles</button>
+              <button class="tab-btn" data-filter="laptops">Laptops</button>
+              <button class="tab-btn" data-filter="audio">Audio</button>
+              <button class="tab-btn" data-filter="watches">Wearables</button>
+              <button class="tab-btn" data-filter="tv">TVs</button>
+              <button class="tab-btn" data-filter="appliances">Appliances</button>
+              <button class="tab-btn" data-filter="cameras">Cameras</button>
+              <button class="tab-btn" data-filter="accessories">Accessories</button>
+            </div>
+          </div>
+          
+          <div class="product-grid" id="catalog-grid">
+            <!-- Loaded dynamically in app.js -->
+          </div>
+
+          <div class="catalog-load-more">
+            <button class="secondary-btn btn-view-more" onclick="showToast('Loading more products...', 'info')">View More</button>
+          </div>
+
+          <div id="catalog-seo-text" class="catalog-seo-text-container">
+            <!-- Loaded dynamically in app.js -->
+          </div>
+        </section>
+      </div>
+
+    </section>
+
+    <!-- 2. PRODUCT DETAILS VIEW -->
+    <section id="product-view" class="app-view hidden">
+      <div class="back-nav">
+        <button id="back-to-home-btn" class="text-link-btn"><i class="fa-solid fa-arrow-left"></i> Back to Homepage</button>
+      </div>
+      <div id="product-detail-container" class="product-detail-container">
+        <!-- Rendered dynamically in app.js -->
+      </div>
+    </section>
+
+    <!-- 3. DUMMY LOGIN/SIGNUP VIEW -->
+    <section id="login-view" class="app-view hidden">
+      <div class="login-page-container">
+        <div class="login-card">
+          <div class="login-tabs">
+            <button class="login-tab-btn active" id="tab-user-login">User Login</button>
+            <button class="login-tab-btn" id="tab-admin-login">Admin Access</button>
+          </div>
+          
+          <div class="login-body">
+            <h2 id="login-title">Log In or Sign Up</h2>
+            <p class="login-subtitle" id="login-subtitle">Enter credentials to experience RMG Electronics</p>
+            
+            <form id="login-form">
+              <div class="form-group">
+                <label for="login-email">Email Address</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-regular fa-envelope input-icon-inner"></i>
+                  <input type="email" id="login-email" placeholder="Enter your email ID" required value="user@rmg.com">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <div class="input-icon-wrapper">
+                  <i class="fa-solid fa-lock input-icon-inner"></i>
+                  <input type="password" id="login-password" placeholder="Enter password" required value="user123">
+                </div>
+              </div>
+              
+              <div class="credentials-tip">
+                <i class="fa-solid fa-circle-info text-teal"></i>
+                <div>
+                  <p><strong>Demo Credentials:</strong></p>
+                  <p id="tip-text">User: <code class="selectable">user@rmg.com</code> / <code class="selectable">user123</code></p>
+                </div>
+              </div>
+              
+              <button type="submit" id="submit-login-btn" class="primary-btn full-btn">Continue</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DUMMY ADMIN DASHBOARD VIEW -->
+    <section id="admin-view" class="app-view hidden">
+      <div class="admin-dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+          <div class="admin-user-info">
+            <i class="fa-solid fa-user-shield"></i>
+            <div>
+              <h4>RMG Administrator</h4>
+              <span>System Admin</span>
+            </div>
+          </div>
+          <nav class="admin-nav">
+            <button class="admin-nav-item active" data-section="dashboard-sec"><i class="fa-solid fa-chart-pie"></i> Overview</button>
+            <button class="admin-nav-item" data-section="products-sec"><i class="fa-solid fa-boxes-stacked"></i> Products List</button>
+            <button class="admin-nav-item" data-section="add-product-sec"><i class="fa-solid fa-circle-plus"></i> Add Product</button>
+            <button class="admin-nav-item" data-section="orders-sec"><i class="fa-solid fa-receipt"></i> Orders Feed</button>
+          </nav>
+        </aside>
+
+        <!-- Main Dashboard Workspace -->
+        <main class="admin-workspace">
+          
+          <!-- Admin Overview -->
+          <div id="admin-section-dashboard-sec" class="admin-subview">
+            <div class="admin-section-header">
+              <h2>Overview Dashboard</h2>
+              <p>Store analytics and summary performance</p>
+            </div>
+            
+            <div class="stats-grid">
+              <div class="stat-card revenue-card">
+                <div class="stat-info">
+                  <span class="stat-label">Total Revenue</span>
+                  <h3 class="stat-val" id="admin-revenue">₹0</h3>
+                </div>
+                <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+              </div>
+              
+              <div class="stat-card orders-card">
+                <div class="stat-info">
+                  <span class="stat-label">Total Orders</span>
+                  <h3 class="stat-val" id="admin-orders-count">0</h3>
+                </div>
+                <div class="stat-icon"><i class="fa-solid fa-shopping-bag"></i></div>
+              </div>
+              
+              <div class="stat-card products-card">
+                <div class="stat-info">
+                  <span class="stat-label">Product Listings</span>
+                  <h3 class="stat-val" id="admin-total-products">12</h3>
+                </div>
+                <div class="stat-icon"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              
+              <div class="stat-card customers-card">
+                <div class="stat-info">
+                  <span class="stat-label">Total Customers</span>
+                  <h3 class="stat-val">256</h3>
+                </div>
+                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+              </div>
+            </div>
+
+            <!-- Recent Orders Table -->
+            <div class="admin-table-container">
+              <h3>Recent Demo Orders (Current Session)</h3>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer Email</th>
+                      <th>Items</th>
+                      <th>Total Price</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-recent-orders-list">
+                    <tr>
+                      <td colspan="6" class="no-records">No orders placed in this session.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Products Manager List -->
+          <div id="admin-section-products-sec" class="admin-subview hidden">
+            <div class="admin-section-header">
+              <h2>Product Inventory Manager</h2>
+              <p>View, edit, or delete existing product listings</p>
+            </div>
+            
+            <div class="admin-table-container">
+              <div class="table-header-actions">
+                <h3>All Active Products</h3>
+                <button class="primary-btn btn-small" id="btn-goto-add-product"><i class="fa-solid fa-plus"></i> Add New Product</button>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Category</th>
+                      <th>Product Details</th>
+                      <th>Selling Price</th>
+                      <th>Original MRP</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-inventory-table-body">
+                    <!-- Loaded dynamically in app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Add Product Form -->
+          <div id="admin-section-add-product-sec" class="admin-subview hidden">
+            <div class="admin-section-header">
+              <h2>Create New Product Listing</h2>
+              <p>Add a product to the catalog (it will immediately appear on the store Homepage!)</p>
+            </div>
+            
+            <form id="admin-product-form" class="admin-form">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="prod-name">Product Name *</label>
+                  <input type="text" id="prod-name" placeholder="e.g. Samsung Galaxy S24 (8GB RAM, 128GB Storage)" required>
+                </div>
+                <div class="form-group">
+                  <label for="prod-category">Category *</label>
+                  <select id="prod-category" required>
+                    <option value="mobiles">Mobiles</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="audio">Audio & Headphones</option>
+                    <option value="watches">Wearables</option>
+                    <option value="tv">Televisions</option>
+                    <option value="appliances">Home Appliances</option>
+                    <option value="cameras">Cameras</option>
+                    <option value="accessories">Accessories</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="prod-price">Selling Price (₹) *</label>
+                  <input type="number" id="prod-price" min="0" placeholder="e.g. 19999" required>
+                </div>
+                <div class="form-group">
+                  <label for="prod-mrp">Original MRP (₹) *</label>
+                  <input type="number" id="prod-mrp" min="0" placeholder="e.g. 24999" required>
+                </div>
+              </div>
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="prod-image">Product Image Layout (Vector Type) *</label>
+                  <select id="prod-image" required>
+                    <option value="mobile-teal">Sleek Teal Mobile SVG</option>
+                    <option value="mobile-titanium">Titanium Mobile SVG</option>
+                    <option value="mobile-s24">Ultra Gray Mobile SVG</option>
+                    <option value="laptop-silver">Aluminum Silver Laptop SVG</option>
+                    <option value="audio-headphones">Premium Over-Ear Headphone SVG</option>
+                    <option value="audio-buds">ANC Gaming Earbuds SVG</option>
+                    <option value="watch-black">AMOLED Wearable SVG</option>
+                    <option value="tv-oled">4K OLED TV Screen SVG</option>
+                    <option value="appliance-purifier">Modern HEPA Purifier SVG</option>
+                    <option value="appliance-dyson">Cordless Stick Vacuum SVG</option>
+                    <option value="camera-outline">Pro Mirrorless Camera SVG</option>
+                    <option value="accessory-keyboard">Mechanical Keyboard SVG</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Highlight *</label>
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="prod-deal">
+                    <label for="prod-deal" style="margin-bottom:0; font-weight: normal;">Display in "Deals of the Day" rail</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="prod-desc">Product Description *</label>
+                <textarea id="prod-desc" rows="4" placeholder="Briefly describe the key selling points, warranty details and screen size of the device..." required></textarea>
+              </div>
+
+              <div class="admin-spec-builder">
+                <h3>Technical Specifications</h3>
+                <div id="specs-list" class="specs-grid-inputs">
+                  <div class="spec-input-row">
+                    <input type="text" placeholder="Spec Name (e.g. RAM)" class="spec-key">
+                    <input type="text" placeholder="Spec Value (e.g. 8 GB)" class="spec-value">
+                  </div>
+                  <div class="spec-input-row">
+                    <input type="text" placeholder="Spec Name (e.g. Warranty)" class="spec-key">
+                    <input type="text" placeholder="Spec Value (e.g. 1 Year)" class="spec-value">
+                  </div>
+                </div>
+                <button type="button" class="secondary-btn btn-small" id="btn-add-spec-row"><i class="fa-solid fa-plus"></i> Add Spec Row</button>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="primary-btn"><i class="fa-solid fa-floppy-disk"></i> Save Product Listing</button>
+                <button type="reset" class="secondary-btn">Reset Form</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Admin Orders Feed -->
+          <div id="admin-section-orders-sec" class="admin-subview hidden">
+            <div class="admin-section-header">
+              <h2>Orders Feed</h2>
+              <p>Track all completed orders during this demo session</p>
+            </div>
+            
+            <div class="admin-table-container">
+              <h3>Demo Customer Invoices</h3>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>User Info</th>
+                      <th>Products Purchased</th>
+                      <th>Order Value</th>
+                      <th>Delivery Location</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-detailed-orders-list">
+                    <tr>
+                      <td colspan="6" class="no-records">No orders recorded in this session.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Side Shopping Cart Drawer Overlay -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay hidden">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>YOUR CART (<span id="cart-drawer-count">0</span>)</h3>
+        <button id="close-cart-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <!-- Cart Items Container -->
+      <div class="cart-items-container" id="cart-items">
+        <div class="empty-cart-view">
+          <i class="fa-solid fa-cart-arrow-down empty-cart-icon"></i>
+          <h4>Your Cart is Empty</h4>
+          <p>Explore our trending deals and add gadgets now!</p>
+          <button class="primary-btn btn-close-cart-explore">Continue Shopping</button>
+        </div>
+      </div>
+      
+      <!-- Cart Footer Summary -->
+      <div class="cart-footer-summary hidden" id="cart-footer-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery Charge</span>
+          <span class="text-teal">FREE</span>
+        </div>
+        <div class="summary-row">
+          <span>Gst & Taxes (Included)</span>
+          <span>₹0</span>
+        </div>
+        <hr class="summary-divider">
+        <div class="summary-row total-row">
+          <span>Amount Payable</span>
+          <span id="cart-grand-total">₹0</span>
+        </div>
+        <button id="checkout-btn" class="primary-btn full-btn">Place Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Croma-style Footer -->
+  <footer class="main-footer">
+    <div class="footer-top">
+      <div class="footer-container flex-footer-top">
+        <div class="footer-subscribe">
+          <h3>CONNECT WITH US</h3>
+          <p>Get updates on latest product launches and exclusive deals.</p>
+          <div class="subscribe-form">
+            <input type="email" placeholder="Enter your email ID">
+            <button class="primary-btn" id="newsletter-btn">SUBMIT</button>
+          </div>
+        </div>
+        <div class="footer-support-card">
+          <i class="fa-solid fa-headset support-icon"></i>
+          <div>
+            <h3>SUPPORT HELP</h3>
+            <p>Call Us at: <strong class="text-teal">+91 98765 43210</strong> (10 AM - 7 PM)</p>
+            <p>Email: <strong class="text-teal">support@rmgelectronics.com</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-mid">
+      <div class="footer-container footer-grid">
+        <div class="footer-col">
+          <h4>PRODUCTS</h4>
+          <ul>
+            <li><a href="#" class="category-link" data-cat="mobiles">Smartphones</a></li>
+            <li><a href="#" class="category-link" data-cat="laptops">Laptops & MacBooks</a></li>
+            <li><a href="#" class="category-link" data-cat="audio">Headphones & Speakers</a></li>
+            <li><a href="#" class="category-link" data-cat="watches">Wearables</a></li>
+            <li><a href="#" class="category-link" data-cat="tv">OLED & QLED TVs</a></li>
+            <li><a href="#" class="category-link" data-cat="appliances">Home Cleaners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>RMG GROUP INFO</h4>
+          <ul>
+            <li><a href="#">About RMG Group</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Corporate Sales</a></li>
+            <li><a href="#">RMG Outlets</a></li>
+            <li><a href="#">Press Releases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>POLICIES</h4>
+          <ul>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Return & Refund Policy</a></li>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Warranty Details</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>STORE LOCATION</h4>
+          <p class="footer-address">
+            RMG Electronics Head Office,<br>
+            Tech Zone Plaza, Sector 62,<br>
+            Mumbai, Maharashtra - 400049
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-container footer-bottom-flex">
+        <p>&copy; 2026 RMG Electronics (RMG Group). All rights reserved.</p>
+        <p>Designed for Client Presentation</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
